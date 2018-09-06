@@ -17,15 +17,19 @@ extern volatile float acc_vector;
 //Mini IMU AHRS 
 void IMU_getValues(float *values);
 void IMU_init(void);
+
+void Initialize_Q(void);
+void IMU_getQ(float *q,volatile float IMU_values[9]);
+void IMU_getRollPitchYaw(float *angles);
+
 void Kalman_AHRS_init(void);
 void KalmanAHRS_getQ(float * q,volatile float IMU_values[9]);
 void Kalman_AHRSupdate(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz);
-void KalmanAHRS_getYawPitchRoll(float * angles);
-void Initialize_Q(void);
-void IMU_getRollPitchYaw(float *angles);
+void KalmanAHRS_getRollPitchYaw(float * angles);
+
 float LPF(float x,float pre_value, float CUTOFF,float dt);
 void IMU_getAttitude(float *RPY, float *RPY_2,float *rate_RPY,float *YPR_Kalman);
 void simple_imu(float *RPY, float *rate_RPY);
-void ahrs_algorithm(float *RPY);
+
 #endif
 

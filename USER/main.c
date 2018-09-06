@@ -49,6 +49,7 @@ int main(void) {
     Initialize_Q();	
 	// Kalman
 	  Kalman_AHRS_init();
+	
     begin();
     referencePressure = readPressure(0);
     TIM_PWM_Configuration();

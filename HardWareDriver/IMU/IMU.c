@@ -179,6 +179,157 @@ void IMU_getValues(float *values)
 
 }
 
+/***************************************************************************
+IMU_data is used by all function
+*******************************************************************************/
+float acc_z_comp;
+float acc_x,acc_y,acc_z;
+static float IMU_data[9];
+void IMU_getAttitude(float *RPY,float *RPY_2,float *rate_RPY ,float *YPR_Kalman)
+{
+	/* This function to get the scaled values from GY-86 should be call here once. 
+	used by all algorithms
+	*/
+
+	IMU_getValues(IMU_data);
+	/*
+	time elapsed should be calculated right after IMU data is read
+	*/
+	now = micros(); 
+	if(now < lastUpdate) 
+	{
+		elapsedT =  (float)(now + (0xffffffff - lastUpdate));
+	}
+	else
+	{
+		elapsedT =  (now - lastUpdate);
+	}
+	//convert us to second
+	  elapsedT = elapsedT * 0.000001f;
+	  halfT = elapsedT / 2.0f;
+	  lastUpdate = now;
+	
+	  simple_imu(RPY, rate_RPY);
+	
+	  IMU_getRollPitchYaw(RPY_2);
+	  KalmanAHRS_getRollPitchYaw(YPR_Kalman);
+}
+// imu code brokking.
+/**/
+void simple_imu(float *RPY,float *rate_RPY) {
+		float gx,gy,gz;
+    static float rateroll,ratepitch,rateyaw;
+	  float gyroXrate,gyroYrate;
+    double angle_roll_acc,angle_pitch_acc;
+	  float acc_length;
+    double kalAngleX, kalAngleY;
+	  acc_x = IMU_data[0];
+    acc_y = IMU_data[1];
+    acc_z = IMU_data[2];
+    gx = IMU_unscaled[3] - offset_gx;
+    gy = IMU_unscaled[4] - offset_gy;
+    gz = IMU_unscaled[5] - offset_gz;
+
+    rateroll = LPF(gx,rateroll,10,elapsedT);
+    ratepitch = LPF(gy,ratepitch,10,elapsedT);
+    rateyaw = LPF(gz,rateyaw,10,elapsedT);
+	
+		rate_RPY[0] = rate_RPY[0] * 0.85f + rateroll * 0.15f/16.4f;
+	  rate_RPY[1] = rate_RPY[1] * 0.85f + ratepitch * 0.15f/16.4f;
+	  rate_RPY[2] = rate_RPY[2] * 0.85f + rateyaw * 0.15f/16.4f;
+	
+    gyroXrate = gx / 16.4f;
+    gyroYrate = gy / 16.4f;
+
+	  /*
+		angle += rate * elapsedTime * ( sensor conversion coeffient )
+		T*2000/32767 = ...
+	  */
+    RPY[0] += rateroll * elapsedT * 2000/32767;// 
+    RPY[1] += ratepitch * elapsedT * 2000/32767;
+    RPY[2] += rateyaw * elapsedT * 2000/32767;
+    //(1/250/65.5)*pi/180=0.000001066
+		// elapsedT * ( sensor conversion coeffient ) * M_PI/180.0f
+    RPY[1]-= RPY[0]*sin(rateyaw * elapsedT * (2000/32767) * M_PI/180);
+    RPY[0]+= RPY[1]*sin(rateyaw * elapsedT * (2000/32767) * M_PI/180);
+
+    acc_length = sqrt((acc_x*acc_x)+(acc_y*acc_y)+(acc_z*acc_z));
+    if(abs(acc_x) < acc_length) {
+        angle_pitch_acc=-asin((float)acc_x/acc_length)*57.296f;
+    }
+    if(abs(acc_y) < acc_length) {
+        angle_roll_acc=asin((float)acc_y/acc_length)*57.296f;
+    }
+
+    kalAngleX = Kalman_getAngle_roll(angle_roll_acc,gyroXrate, elapsedT);
+    kalAngleY = Kalman_getAngle_pitch(angle_pitch_acc,gyroYrate, elapsedT);
+
+    RPY[1] = RPY[1] * 0.975f +  kalAngleY * 0.025f;
+    RPY[0] =  RPY[0] * 0.975f +   kalAngleX * 0.025f ;
+//		acc_z_comp = acc_z_comp*0.9 + acc_z*0.1;
+//		*rate_z += acc_z_comp*elapsedT;
+}
+
+	
+void Initialize_Q(void)
+{
+	float acc[9];
+	int i;
+	volatile float temp, roll, pitch, yaw, yh, xh;
+	volatile float  acc_X, acc_Y, acc_Z, acc_MX, acc_MY, acc_MZ; //
+	
+	// initialize quaternion
+	q0 = 1.0f;  //
+	q1 = 0.0f;
+	q2 = 0.0f;
+	q3 = 0.0f;
+	qa0 = 1.0f;  //
+	qa1 = 0.0f;
+	qa2 = 0.0f;
+	qa3 = 0.0f;
+	exInt = 0.0;
+	eyInt = 0.0;
+	ezInt = 0.0;
+	integralFBx = 0.0;
+	integralFBy = 0.0;
+	integralFBz	= 0.0;
+	/*
+    Get DATA_SIZE raw samples and calculate the average.
+		Calculate the initial quaternion values using traditional method. 
+	*/
+	for(i = 0; i < DATA_SIZE; i++) {
+		IMU_getValues(acc);
+		acc_X += acc[0];
+		acc_Y += acc[1];
+		acc_Z += acc[2];
+		acc_MX += acc[6];
+		acc_MY += acc[7];
+		acc_MZ += acc[8];
+	}
+	acc_X /= DATA_SIZE;
+	acc_Y /= DATA_SIZE;
+	acc_Z /= DATA_SIZE;
+	acc_MX /= DATA_SIZE;
+	acc_MY /= DATA_SIZE;
+	acc_MZ /= DATA_SIZE;
+
+	temp = acc_X * invSqrt((acc_Y * acc_Y + acc_Z * acc_Z));
+	pitch = atan(temp) * 57.3;
+
+	temp = acc_Y * invSqrt((acc_X * acc_X + acc_Z * acc_Z));
+	roll = atan(temp) * 57.3;
+
+	yh = acc_MY * cos(roll) + acc_MZ * sin(roll);
+	xh = acc_MX * cos(pitch) + acc_MY * sin(roll) * sin(pitch) - acc_MZ * cos(roll) * sin(pitch);
+	yaw = atan2(yh, xh);
+	// Initial quaternion values
+	q0 = cos(roll / 2) * cos(pitch / 2) * cos(yaw / 2) + sin(roll / 2) * sin(pitch / 2) * sin(yaw / 2);
+	q1 = sin(roll / 2) * cos(pitch / 2) * cos(yaw / 2) - cos(roll / 2) * sin(pitch / 2) * sin(yaw / 2);
+	q2 = cos(roll / 2) * sin(pitch / 2) * cos(yaw / 2) + sin(roll / 2) * cos(pitch / 2) * sin(yaw / 2);
+	q3 = cos(roll / 2) * cos(pitch / 2) * sin(yaw / 2) - sin(roll / 2) * sin(pitch / 2) * cos(yaw / 2);
+	// halfT(lastUpdate,...)
+//	lastUpdate = micros();
+}
 
 /****************************************************************
 Requirements:
@@ -380,110 +531,6 @@ void IMU_getQ(float *q,volatile float IMU_values[9])
 	q[2] = qa2;
 	q[3] = qa3;
 }
-
-// a varient of asin() that checks the input ranges and ensures a
-// valid angle as output. If nan is given as input then zero is
-// returned.
-
-
-
-/***************************************************************************
-IMU_data is used by all function
-*******************************************************************************/
-float acc_z_comp;
-float acc_x,acc_y,acc_z;
-static float IMU_data[9];
-void IMU_getAttitude(float *RPY,float *RPY_2,float *rate_RPY ,float *YPR_Kalman)
-{
-
-   
-	/* This function to get the scaled values from GY-86 should be call here once. 
-	used by all algorithms
-	*/
-
-	IMU_getValues(IMU_data);
-	/*
-	time elapsed should be calculated right after IMU data is read
-	*/
-	now = micros(); 
-	if(now < lastUpdate) 
-	{
-		elapsedT =  (float)(now + (0xffffffff - lastUpdate));
-	}
-	else
-	{
-		elapsedT =  (now - lastUpdate);
-	}
-	//convert us to second
-	  elapsedT = elapsedT * 0.000001f;
-	  halfT = elapsedT / 2.0f;
-	  lastUpdate = now;
-	
-	  simple_imu(RPY, rate_RPY);
-	
-	  ahrs_algorithm(RPY_2);
-	  KalmanAHRS_getYawPitchRoll(YPR_Kalman);
-}
-// imu code brokking.
-/**/
-void simple_imu(float *RPY,float *rate_RPY) {
-		float gx,gy,gz;
-    static float rateroll,ratepitch,rateyaw;
-	  float gyroXrate,gyroYrate;
-    double angle_roll_acc,angle_pitch_acc;
-	  float acc_length;
-    double kalAngleX, kalAngleY;
-	  acc_x = IMU_data[0];
-    acc_y = IMU_data[1];
-    acc_z = IMU_data[2];
-    gx = IMU_unscaled[3] - offset_gx;
-    gy = IMU_unscaled[4] - offset_gy;
-    gz = IMU_unscaled[5] - offset_gz;
-
-    rateroll = LPF(gx,rateroll,10,elapsedT);
-    ratepitch = LPF(gy,ratepitch,10,elapsedT);
-    rateyaw = LPF(gz,rateyaw,10,elapsedT);
-	
-		rate_RPY[0] = rate_RPY[0] * 0.85f + rateroll * 0.15f/16.4f;
-	  rate_RPY[1] = rate_RPY[1] * 0.85f + ratepitch * 0.15f/16.4f;
-	  rate_RPY[2] = rate_RPY[2] * 0.85f + rateyaw * 0.15f/16.4f;
-	
-    gyroXrate = gx / 16.4f;
-    gyroYrate = gy / 16.4f;
-
-	  /*
-		angle += rate * elapsedTime * ( sensor conversion coeffient )
-		T*2000/32767 = ...
-	  */
-    RPY[0] += rateroll * elapsedT * 2000/32767;// 
-    RPY[1] += ratepitch * elapsedT * 2000/32767;
-    RPY[2] += rateyaw * elapsedT * 2000/32767;
-    //(1/250/65.5)*pi/180=0.000001066
-		// elapsedT * ( sensor conversion coeffient ) * M_PI/180.0f
-    RPY[1]-= RPY[0]*sin(rateyaw * elapsedT * (2000/32767) * M_PI/180);
-    RPY[0]+= RPY[1]*sin(rateyaw * elapsedT * (2000/32767) * M_PI/180);
-
-    acc_length = sqrt((acc_x*acc_x)+(acc_y*acc_y)+(acc_z*acc_z));
-    if(abs(acc_x) < acc_length) {
-        angle_pitch_acc=-asin((float)acc_x/acc_length)*57.296f;
-    }
-    if(abs(acc_y) < acc_length) {
-        angle_roll_acc=asin((float)acc_y/acc_length)*57.296f;
-    }
-
-    kalAngleX = Kalman_getAngle_roll(angle_roll_acc,gyroXrate, elapsedT);
-    kalAngleY = Kalman_getAngle_pitch(angle_pitch_acc,gyroYrate, elapsedT);
-
-    RPY[1] = RPY[1] * 0.975f +  kalAngleY * 0.025f;
-    RPY[0] =  RPY[0] * 0.975f +   kalAngleX * 0.025f ;
-//		acc_z_comp = acc_z_comp*0.9 + acc_z*0.1;
-//		*rate_z += acc_z_comp*elapsedT;
-}
-
-void ahrs_algorithm(float *RPY) {
-	IMU_getRollPitchYaw(RPY);
-}
-	
 void IMU_getRollPitchYaw(float *angles)
 {
 	static float q[4];
@@ -499,95 +546,9 @@ void IMU_getRollPitchYaw(float *angles)
 	// we let safe_asin() handle the singularities near 90/-90 in pitch
 	
 	IMU_Pitch = angles[1] = -safe_asin(2.0f * (q[0] * q[2] - q[3] * q[1])) * 180 / M_PI;
-	IMU_Yaw = angles[2] = -atan2(2 * q1 * q2 + 2 * q0 * q3, -2 * q2 * q2 - 2 * q3 * q3 + 1) * 180 / M_PI; // yaw
+	IMU_Yaw = angles[2] = -atan2(2 * q[1] * q[2] + 2 * q[0] * q[3], -2 * q[2] * q[2] - 2 * q[3] * q[3] + 1) * 180 / M_PI; // yaw
 }
 
-
-void KalmanAHRS_getYawPitchRoll(float * angles) {
-  float q[4]; //¡¡ËÄÔªÊý
-  
-  KalmanAHRS_getQ(q, IMU_data); //¸üÐÂÈ«¾ÖËÄÔªÊý
-	
-  angles[0] = -atan2(2 * q[1] * q[2] + 2 * q[0] * q[3], -2 * q[2]*q[2] - 2 * q[3] * q[3] + 1)* 180/M_PI; // yaw 
-  angles[1] = -asin(-2 * q[1] * q[3] + 2 * q[0] * q[2])* 180/M_PI; // pitch
-  angles[2] = atan2(2 * q[2] * q[3] + 2 * q[0] * q[1], -2 * q[1] * q[1] - 2 * q[2] * q[2] + 1)* 180/M_PI; // roll
-  if(angles[0]<0)angles[0]+=360.0f;  //½« -+180¶È  ×ª³É0-360¶È
-}
-
-void KalmanAHRS_getQ(float * q,volatile float IMU_values[9]) {
-
- // IMU_getValues(mygetqval);	 
-
-  //½«ÍÓÂÝÒÇµÄ²âÁ¿Öµ×ª³É»¡¶ÈÃ¿Ãë
-  //¼ÓËÙ¶ÈºÍ´ÅÁ¦¼Æ±£³Ö ADCÖµ¡¡²»ÐèÒª×ª»»
-   Kalman_AHRSupdate(IMU_values[3] * M_PI/180, IMU_values[4] * M_PI/180, IMU_values[5] * M_PI/180,
-   IMU_values[0], IMU_values[1], IMU_values[2], IMU_values[6], IMU_values[7], IMU_values[8]);
-     
-  q[0] = q_0; //·µ»Øµ±Ç°Öµ
-  q[1] = q_1;
-  q[2] = q_2;
-  q[3] = q_3;
-}
-
-void Initialize_Q(void)
-{
-	float acc[9];
-	int i;
-	volatile float temp, roll, pitch, yaw, yh, xh;
-	volatile float  acc_X, acc_Y, acc_Z, acc_MX, acc_MY, acc_MZ; //
-	
-	// initialize quaternion
-	q0 = 1.0f;  //
-	q1 = 0.0f;
-	q2 = 0.0f;
-	q3 = 0.0f;
-	qa0 = 1.0f;  //
-	qa1 = 0.0f;
-	qa2 = 0.0f;
-	qa3 = 0.0f;
-	exInt = 0.0;
-	eyInt = 0.0;
-	ezInt = 0.0;
-	integralFBx = 0.0;
-	integralFBy = 0.0;
-	integralFBz	= 0.0;
-	/*
-    Get DATA_SIZE raw samples and calculate the average.
-		Calculate the initial quaternion values using traditional method. 
-	*/
-	for(i = 0; i < DATA_SIZE; i++) {
-		IMU_getValues(acc);
-		acc_X += acc[0];
-		acc_Y += acc[1];
-		acc_Z += acc[2];
-		acc_MX += acc[6];
-		acc_MY += acc[7];
-		acc_MZ += acc[8];
-	}
-	acc_X /= DATA_SIZE;
-	acc_Y /= DATA_SIZE;
-	acc_Z /= DATA_SIZE;
-	acc_MX /= DATA_SIZE;
-	acc_MY /= DATA_SIZE;
-	acc_MZ /= DATA_SIZE;
-
-	temp = acc_X * invSqrt((acc_Y * acc_Y + acc_Z * acc_Z));
-	pitch = atan(temp) * 57.3;
-
-	temp = acc_Y * invSqrt((acc_X * acc_X + acc_Z * acc_Z));
-	roll = atan(temp) * 57.3;
-
-	yh = acc_MY * cos(roll) + acc_MZ * sin(roll);
-	xh = acc_MX * cos(pitch) + acc_MY * sin(roll) * sin(pitch) - acc_MZ * cos(roll) * sin(pitch);
-	yaw = atan2(yh, xh);
-	// Initial quaternion values
-	q0 = cos(roll / 2) * cos(pitch / 2) * cos(yaw / 2) + sin(roll / 2) * sin(pitch / 2) * sin(yaw / 2);
-	q1 = sin(roll / 2) * cos(pitch / 2) * cos(yaw / 2) - cos(roll / 2) * sin(pitch / 2) * sin(yaw / 2);
-	q2 = cos(roll / 2) * sin(pitch / 2) * cos(yaw / 2) + sin(roll / 2) * cos(pitch / 2) * sin(yaw / 2);
-	q3 = cos(roll / 2) * cos(pitch / 2) * sin(yaw / 2) - sin(roll / 2) * sin(pitch / 2) * cos(yaw / 2);
-	// halfT(lastUpdate,...)
-//	lastUpdate = micros();
-}
 
 void Kalman_AHRS_init(void)
 {
@@ -610,33 +571,35 @@ void Kalman_AHRS_init(void)
     q_3=0;
 }
 
-
-float LPF(float x, float pre_value, float CUTOFF,float dt)
-{
-    float RC, alpha, y;
-    RC = 1.0f/(CUTOFF*2*3.1416f);
-    alpha = dt/(RC+dt);
-    y = pre_value + alpha * ( x - pre_value );
-    return y;
+void KalmanAHRS_getRollPitchYaw(float * angles) {
+  float q[4]; //¡¡ËÄÔªÊý
+  
+  KalmanAHRS_getQ(q, IMU_data); //¸üÐÂÈ«¾ÖËÄÔªÊý
+//	angles[2]=
+//  angles[2] = -atan2(2 * q[1] * q[2] + 2 * q[0] * q[3], -2 * q[2]*q[2] - 2 * q[3] * q[3] + 1)* 180/M_PI; // yaw 
+//  angles[1] = -safe_asin(-2 * q[1] * q[3] + 2 * q[0] * q[2])* 180/M_PI; // pitch
+//  angles[0] = atan2(2 * q[2] * q[3] + 2 * q[0] * q[1], -2 * q[1] * q[1] - 2 * q[2] * q[2] + 1)* 180/M_PI; // roll
+	
+		IMU_Roll = angles[0] = (atan2(2.0f * (q[0] * q[1] + q[2] * q[3]),
+				      1 - 2.0f * (q[1] * q[1] + q[2] * q[2]))) * 180 / M_PI;
+	//angles[2]-=0.8f;
+	// we let safe_asin() handle the singularities near 90/-90 in pitch
+	
+	IMU_Pitch = angles[1] = -safe_asin(2.0f * (q[0] * q[2] - q[3] * q[1])) * 180 / M_PI;
+	IMU_Yaw = angles[2] = -atan2(2 * q[1] * q[2] + 2 * q[0] * q[3], -2 * q[2] * q[2] - 2 * q[3] * q[3] + 1) * 180 / M_PI;
+	
+ // if(angles[2]<2)angles[2]+=360.0f;  //½« -+180¶È  ×ª³É0-360¶È
 }
 
-float safe_asin(float v)
-{
-	if (isnan(v))
-	{
-		return 0.0f;
-	}
-	if (v >= 1.0f)
-	{
-		return M_PI / 2;
-	}
-	if (v <= -1.0f)
-	{
-		return -M_PI / 2;
-	}
-	return asin(v);
+void KalmanAHRS_getQ(float * q,volatile float IMU_values[9]) {
+   Kalman_AHRSupdate(IMU_values[3] * M_PI/180, IMU_values[4] * M_PI/180, IMU_values[5] * M_PI/180,
+   IMU_values[0], IMU_values[1], IMU_values[2], IMU_values[6], IMU_values[7], IMU_values[8]);
+     
+   q[0] = q_0; //·µ»Øµ±Ç°Öµ
+   q[1] = q_1;
+   q[2] = q_2;
+   q[3] = q_3;
 }
-
 // Kalman
 
 void Kalman_AHRSupdate(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz) {
@@ -646,7 +609,7 @@ void Kalman_AHRSupdate(float gx, float gy, float gz, float ax, float ay, float a
   float g=9.79973;
   float Ha1,Ha2,Ha3,Ha4,Hb1,Hb2,Hb3,Hb4;
   float e1,e2,e3,e4,e5,e6;
-  float halfT;
+//  float halfT;
 
 // ÏÈ°ÑÕâÐ©ÓÃµÃµ½µÄÖµËãºÃ
   float q0q0 = q_0*q_0;
@@ -764,3 +727,33 @@ F[42]=0;F[43]=0;F[44]=0;F[45]=0;F[46]=0;F[47]=0;
   q_2 = q_2 * norm;
   q_3 = q_3 * norm;
 }
+
+
+float LPF(float x, float pre_value, float CUTOFF,float dt)
+{
+    float RC, alpha, y;
+    RC = 1.0f/(CUTOFF*2*3.1416f);
+    alpha = dt/(RC+dt);
+    y = pre_value + alpha * ( x - pre_value );
+    return y;
+}
+// a varient of asin() that checks the input ranges and ensures a
+// valid angle as output. If nan is given as input then zero is
+// returned.
+float safe_asin(float v)
+{
+	if (isnan(v))
+	{
+		return 0.0f;
+	}
+	if (v >= 1.0f)
+	{
+		return M_PI / 2;
+	}
+	if (v <= -1.0f)
+	{
+		return -M_PI / 2;
+	}
+	return asin(v);
+}
+
