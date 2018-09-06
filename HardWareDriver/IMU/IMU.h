@@ -19,7 +19,8 @@ void IMU_init(void);
 void Initialize_Q(void);
 void IMU_getRollPitchYaw(float *angles);
 float LPF(float x,float pre_value, float CUTOFF,float dt);
-void IMU_getAttitude(float *RPY,float *rate_RPY);
-
+void IMU_getAttitude(float *RPY, float *RPY_2,float *rate_RPY);
+void simple_imu(float *RPY, float *rate_RPY);
+void ahrs_algorithm(float *RPY);
 #endif
 

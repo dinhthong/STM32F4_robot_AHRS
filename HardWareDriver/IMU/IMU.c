@@ -69,7 +69,7 @@ void IMU_init(void)
 	  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	  GPIO_Init(GPIOB, &GPIO_InitStructure);
 	
-	// DRY  - PB 13
+	// DRY 
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
@@ -78,9 +78,7 @@ void IMU_init(void)
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
 
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
-	
 	MPU6050_initialize();
-
 	HMC5883L_SetUp();
 	delay_ms(20);
 		//get raw offset.
@@ -347,14 +345,10 @@ IMU_data is used by all function
 float acc_z_comp;
 float acc_x,acc_y,acc_z;
 static float IMU_data[9];
-void IMU_getAttitude(float *RPY,float *rate_RPY)
+void IMU_getAttitude(float *RPY,float *RPY_2,float *rate_RPY)
 {
-		float gx,gy,gz;
-    static float rateroll,ratepitch,rateyaw;
-    float tong;
-    float gyroXrate,gyroYrate;
-    double angle_roll_acc,angle_pitch_acc;
-    double kalAngleX, kalAngleY;
+
+   
 	/* This function to get the scaled values from GY-86 should be call here once. 
 	used by all algorithms
 	*/
@@ -377,16 +371,29 @@ void IMU_getAttitude(float *RPY,float *rate_RPY)
 	  halfT = elapsedT / 2.0f;
 	  lastUpdate = now;
 	
-    acc_x=IMU_data[0];
-    acc_y=IMU_data[1];
-    acc_z=IMU_data[2];
-    gx=IMU_unscaled[3]-offset_gx;
-    gy=IMU_unscaled[4]-offset_gy;
-    gz=IMU_unscaled[5]-offset_gz;
+	  simple_imu(RPY, rate_RPY);
+	
+	  ahrs_algorithm(RPY_2);
+}
+// imu code brokking.
+/**/
+void simple_imu(float *RPY,float *rate_RPY) {
+		float gx,gy,gz;
+    static float rateroll,ratepitch,rateyaw;
+	  float gyroXrate,gyroYrate;
+    double angle_roll_acc,angle_pitch_acc;
+	  float acc_length;
+    double kalAngleX, kalAngleY;
+	  acc_x = IMU_data[0];
+    acc_y = IMU_data[1];
+    acc_z = IMU_data[2];
+    gx = IMU_unscaled[3] - offset_gx;
+    gy = IMU_unscaled[4] - offset_gy;
+    gz = IMU_unscaled[5] - offset_gz;
 
-    rateroll=LPF(gx,rateroll,10,elapsedT);
-    ratepitch=LPF(gy,ratepitch,10,elapsedT);
-    rateyaw=LPF(gz,rateyaw,10,elapsedT);
+    rateroll = LPF(gx,rateroll,10,elapsedT);
+    ratepitch = LPF(gy,ratepitch,10,elapsedT);
+    rateyaw = LPF(gz,rateyaw,10,elapsedT);
 	
 		rate_RPY[0] = rate_RPY[0] * 0.85f + rateroll * 0.15f/16.4f;
 	  rate_RPY[1] = rate_RPY[1] * 0.85f + ratepitch * 0.15f/16.4f;
@@ -407,12 +414,12 @@ void IMU_getAttitude(float *RPY,float *rate_RPY)
     RPY[1]-= RPY[0]*sin(rateyaw * elapsedT * (2000/32767) * M_PI/180);
     RPY[0]+= RPY[1]*sin(rateyaw * elapsedT * (2000/32767) * M_PI/180);
 
-    tong = sqrt((acc_x*acc_x)+(acc_y*acc_y)+(acc_z*acc_z));
-    if(abs(acc_x) < tong) {
-        angle_pitch_acc=-asin((float)acc_x/tong)*57.296f;
+    acc_length = sqrt((acc_x*acc_x)+(acc_y*acc_y)+(acc_z*acc_z));
+    if(abs(acc_x) < acc_length) {
+        angle_pitch_acc=-asin((float)acc_x/acc_length)*57.296f;
     }
-    if(abs(acc_y) < tong) {
-        angle_roll_acc=asin((float)acc_y/tong)*57.296f;
+    if(abs(acc_y) < acc_length) {
+        angle_roll_acc=asin((float)acc_y/acc_length)*57.296f;
     }
 
     kalAngleX = Kalman_getAngle_roll(angle_roll_acc,gyroXrate, elapsedT);
@@ -423,8 +430,11 @@ void IMU_getAttitude(float *RPY,float *rate_RPY)
 //		acc_z_comp = acc_z_comp*0.9 + acc_z*0.1;
 //		*rate_z += acc_z_comp*elapsedT;
 }
-// imu code brokking.
 
+void ahrs_algorithm(float *RPY) {
+	IMU_getRollPitchYaw(RPY);
+}
+	
 void IMU_getRollPitchYaw(float *angles)
 {
 	static float q[4];
@@ -501,7 +511,7 @@ void Initialize_Q(void)
 	q2 = cos(roll / 2) * sin(pitch / 2) * cos(yaw / 2) + sin(roll / 2) * cos(pitch / 2) * sin(yaw / 2);
 	q3 = cos(roll / 2) * cos(pitch / 2) * sin(yaw / 2) - sin(roll / 2) * sin(pitch / 2) * cos(yaw / 2);
 	// halfT(lastUpdate,...)
-	lastUpdate = micros();
+//	lastUpdate = micros();
 }
 
 float LPF(float x, float pre_value, float CUTOFF,float dt)

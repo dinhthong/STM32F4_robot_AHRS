@@ -25,11 +25,13 @@ float fil_comple_alt, fil_lpf_alt, EstAlt;
 float absoluteAltitude, ms5611_temperature;
 float ms5611_altitude, ms5611_altitude_offset;
 double dt;
-float rpy[3], rate_rpy[3]; //roll pitch yaw 
+float rpy_1[3], rate_rpy[3]; //roll pitch yaw 
+float rpy_2[3];
+
 float rate_alt;
 uint16_t j;
 uint32_t loop_var;
-
+extern uint32_t lastUpdate;
 double alt_setpoint = 0.0f;
 int main(void) {
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1); 
@@ -39,10 +41,13 @@ int main(void) {
 	  usart_printf_config(115200);
     Initial_System_Timer();  
     IMU_init();
+	// for simple_imu
 	  offset_gx=-72.0f;
 	  offset_gy = 18.0f; 
 	  offset_gz = 0.0f;
-   // Initialize_Q();	
+	// 
+    Initialize_Q();	
+	
     begin();
     referencePressure = readPressure(0);
     TIM_PWM_Configuration();
@@ -56,10 +61,11 @@ int main(void) {
 			delay_ms(4);
 		}
     ms5611_altitude_offset = EstAlt;
-
+    // imu time counter last Update
+		lastUpdate = TIM5->CNT;
         while(1) {
             GPIO_ToggleBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
-            IMU_getAttitude(rpy, rate_rpy);
+            IMU_getAttitude(rpy_1, rpy_2, rate_rpy);
             get_Baro();
 					  ms5611_altitude = EstAlt - ms5611_altitude_offset;
 
@@ -79,6 +85,7 @@ int main(void) {
 }
 
 void get_Baro(void){
+	  
 		update_baro(&ms5611_temperature, &realPressure, &absoluteAltitude);
     fil_lpf_alt = LPF(absoluteAltitude, fil_lpf_alt, cut_off, dt);
     fil_comple_alt = fil_comple_alt*0.977f + fil_lpf_alt*0.023f;
