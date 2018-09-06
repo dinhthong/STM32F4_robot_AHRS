@@ -1,5 +1,5 @@
 Dependencies for Project 'Attitude', Target 'Attitude': (DO NOT MODIFY !)
-F (.\main.c)(0x5B90E89B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\HardWareDriver\HMC5883L -I ..\USER -I ..\IIC -I ..\HardWareDriver\AT45DB -I ..\HardWareDriver\IMU -I ..\HardWareDriver\Math -I ..\HardWareDriver\MPU6050 -I ..\HardWareDriver\Service -I ..\HardWareDriver\UART1 -I ..\HardWareDriver\USART_DMA -I ..\HardWareDriver\MS5611 -I ..\HardWareDriver\Kalman -I ..\HardWareDriver\Copter-I.\RTE\_Attitude-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\build\main.o --omf_browse ..\build\main.crf --depend ..\build\main.d)
+F (.\main.c)(0x5B90F67E)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\HardWareDriver\HMC5883L -I ..\USER -I ..\IIC -I ..\HardWareDriver\AT45DB -I ..\HardWareDriver\IMU -I ..\HardWareDriver\Math -I ..\HardWareDriver\MPU6050 -I ..\HardWareDriver\Service -I ..\HardWareDriver\UART1 -I ..\HardWareDriver\USART_DMA -I ..\HardWareDriver\MS5611 -I ..\HardWareDriver\Kalman -I ..\HardWareDriver\Copter-I.\RTE\_Attitude-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\build\main.o --omf_browse ..\build\main.crf --depend ..\build\main.d)
 I (main.h)(0x5B8F70B7)
 I (..\HardWareDriver\Service\common.h)(0x5B90DFFA)
 I (..\HardWareDriver\Service\IOI2C.h)(0x59C247A7)
@@ -42,8 +42,9 @@ I (..\SYSTEM\delay\delay.h)(0x59C247A7)
 I (..\HardWareDriver\MPU6050\MPU6050.h)(0x5B72A374)
 I (..\HardWareDriver\HMC5883L\HMC5883L.h)(0x5B6DBCB7)
 I (..\HardWareDriver\MS5611\ms5611.h)(0x5B728118)
-I (..\HardWareDriver\IMU\IMU.h)(0x5B90E96F)
+I (..\HardWareDriver\IMU\IMU.h)(0x5B90F670)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x588B9154)
+I (..\HardWareDriver\Service\Matrix.h)(0x50C94828)
 I (..\HardWareDriver\Kalman\Kalman.h)(0x5B72EB35)
 I (..\HardWareDriver\Copter\copter_config.h)(0x5B7AD778)
 I (..\USER\stm32f4xx_it.h)(0x5B77D61B)
@@ -869,13 +870,14 @@ I (..\SYSTEM\delay\delay.h)(0x59C247A7)
 I (..\HardWareDriver\Service\common.h)(0x5B90DFFA)
 I (..\HardWareDriver\MPU6050\MPU6050.h)(0x5B72A374)
 I (..\HardWareDriver\MS5611\ms5611.h)(0x5B728118)
-I (..\HardWareDriver\IMU\IMU.h)(0x5B90E96F)
+I (..\HardWareDriver\IMU\IMU.h)(0x5B90F670)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x588B9154)
+I (..\HardWareDriver\Service\Matrix.h)(0x50C94828)
 I (..\HardWareDriver\Kalman\Kalman.h)(0x5B72EB35)
 I (..\HardWareDriver\Copter\copter_config.h)(0x5B7AD778)
 I (..\USER\stm32f4xx_it.h)(0x5B77D61B)
-F (..\HardWareDriver\IMU\IMU.c)(0x5B90E946)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\HardWareDriver\HMC5883L -I ..\USER -I ..\IIC -I ..\HardWareDriver\AT45DB -I ..\HardWareDriver\IMU -I ..\HardWareDriver\Math -I ..\HardWareDriver\MPU6050 -I ..\HardWareDriver\Service -I ..\HardWareDriver\UART1 -I ..\HardWareDriver\USART_DMA -I ..\HardWareDriver\MS5611 -I ..\HardWareDriver\Kalman -I ..\HardWareDriver\Copter-I.\RTE\_Attitude-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\build\imu.o --omf_browse ..\build\imu.crf --depend ..\build\imu.d)
-I (..\HardWareDriver\IMU\IMU.h)(0x5B90E96F)
+F (..\HardWareDriver\IMU\IMU.c)(0x5B90F62F)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\HardWareDriver\HMC5883L -I ..\USER -I ..\IIC -I ..\HardWareDriver\AT45DB -I ..\HardWareDriver\IMU -I ..\HardWareDriver\Math -I ..\HardWareDriver\MPU6050 -I ..\HardWareDriver\Service -I ..\HardWareDriver\UART1 -I ..\HardWareDriver\USART_DMA -I ..\HardWareDriver\MS5611 -I ..\HardWareDriver\Kalman -I ..\HardWareDriver\Copter-I.\RTE\_Attitude-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\build\imu.o --omf_browse ..\build\imu.crf --depend ..\build\imu.d)
+I (..\HardWareDriver\IMU\IMU.h)(0x5B90F670)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x588B9154)
 I (..\HardWareDriver\Service\common.h)(0x5B90DFFA)
 I (..\HardWareDriver\Service\IOI2C.h)(0x59C247A7)
@@ -921,6 +923,7 @@ I (..\HardWareDriver\MS5611\ms5611.h)(0x5B728118)
 I (..\HardWareDriver\Kalman\Kalman.h)(0x5B72EB35)
 I (..\HardWareDriver\Copter\copter_config.h)(0x5B7AD778)
 I (..\USER\stm32f4xx_it.h)(0x5B77D61B)
+I (..\HardWareDriver\Service\Matrix.h)(0x50C94828)
 F (..\HardWareDriver\Math\Fmath.c)(0x5B73A56C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\HardWareDriver\HMC5883L -I ..\USER -I ..\IIC -I ..\HardWareDriver\AT45DB -I ..\HardWareDriver\IMU -I ..\HardWareDriver\Math -I ..\HardWareDriver\MPU6050 -I ..\HardWareDriver\Service -I ..\HardWareDriver\UART1 -I ..\HardWareDriver\USART_DMA -I ..\HardWareDriver\MS5611 -I ..\HardWareDriver\Kalman -I ..\HardWareDriver\Copter-I.\RTE\_Attitude-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\build\fmath.o --omf_browse ..\build\fmath.crf --depend ..\build\fmath.d)
 I (..\USER\stm32f4xx.h)(0x59C247A7)
 I (..\CORE\core_cm4.h)(0x59C247A7)
@@ -964,8 +967,9 @@ I (..\SYSTEM\delay\delay.h)(0x59C247A7)
 I (..\HardWareDriver\MPU6050\MPU6050.h)(0x5B72A374)
 I (..\HardWareDriver\HMC5883L\HMC5883L.h)(0x5B6DBCB7)
 I (..\HardWareDriver\MS5611\ms5611.h)(0x5B728118)
-I (..\HardWareDriver\IMU\IMU.h)(0x5B90E96F)
+I (..\HardWareDriver\IMU\IMU.h)(0x5B90F670)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x588B9154)
+I (..\HardWareDriver\Service\Matrix.h)(0x50C94828)
 I (..\HardWareDriver\Kalman\Kalman.h)(0x5B72EB35)
 I (..\HardWareDriver\Copter\copter_config.h)(0x5B7AD778)
 I (..\USER\stm32f4xx_it.h)(0x5B77D61B)
@@ -1011,8 +1015,9 @@ I (..\HardWareDriver\Service\common.h)(0x5B90DFFA)
 I (..\HardWareDriver\Service\IOI2C.h)(0x59C247A7)
 I (..\HardWareDriver\HMC5883L\HMC5883L.h)(0x5B6DBCB7)
 I (..\HardWareDriver\MS5611\ms5611.h)(0x5B728118)
-I (..\HardWareDriver\IMU\IMU.h)(0x5B90E96F)
+I (..\HardWareDriver\IMU\IMU.h)(0x5B90F670)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x588B9154)
+I (..\HardWareDriver\Service\Matrix.h)(0x50C94828)
 I (..\HardWareDriver\Kalman\Kalman.h)(0x5B72EB35)
 I (..\HardWareDriver\Copter\copter_config.h)(0x5B7AD778)
 I (..\USER\stm32f4xx_it.h)(0x5B77D61B)
@@ -1097,13 +1102,14 @@ I (..\HardWareDriver\Service\common.h)(0x5B90DFFA)
 I (..\HardWareDriver\Service\IOI2C.h)(0x59C247A7)
 I (..\HardWareDriver\MPU6050\MPU6050.h)(0x5B72A374)
 I (..\HardWareDriver\HMC5883L\HMC5883L.h)(0x5B6DBCB7)
-I (..\HardWareDriver\IMU\IMU.h)(0x5B90E96F)
+I (..\HardWareDriver\IMU\IMU.h)(0x5B90F670)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x588B9154)
+I (..\HardWareDriver\Service\Matrix.h)(0x50C94828)
 I (..\HardWareDriver\Kalman\Kalman.h)(0x5B72EB35)
 I (..\HardWareDriver\Copter\copter_config.h)(0x5B7AD778)
 I (..\USER\stm32f4xx_it.h)(0x5B77D61B)
 I (..\HardWareDriver\Math\Fmath.h)(0x5B73A5B8)
-F (..\HardWareDriver\Kalman\Kalman.c)(0x5B72EB35)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\HardWareDriver\HMC5883L -I ..\USER -I ..\IIC -I ..\HardWareDriver\AT45DB -I ..\HardWareDriver\IMU -I ..\HardWareDriver\Math -I ..\HardWareDriver\MPU6050 -I ..\HardWareDriver\Service -I ..\HardWareDriver\UART1 -I ..\HardWareDriver\USART_DMA -I ..\HardWareDriver\MS5611 -I ..\HardWareDriver\Kalman -I ..\HardWareDriver\Copter-I.\RTE\_Attitude-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\build\kalman.o --omf_browse ..\build\kalman.crf --depend ..\build\kalman.d)
+F (..\HardWareDriver\Kalman\Kalman.c)(0x5B90F33D)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\HardWareDriver\HMC5883L -I ..\USER -I ..\IIC -I ..\HardWareDriver\AT45DB -I ..\HardWareDriver\IMU -I ..\HardWareDriver\Math -I ..\HardWareDriver\MPU6050 -I ..\HardWareDriver\Service -I ..\HardWareDriver\UART1 -I ..\HardWareDriver\USART_DMA -I ..\HardWareDriver\MS5611 -I ..\HardWareDriver\Kalman -I ..\HardWareDriver\Copter-I.\RTE\_Attitude-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\build\kalman.o --omf_browse ..\build\kalman.crf --depend ..\build\kalman.d)
 I (..\HardWareDriver\Kalman\Kalman.h)(0x5B72EB35)
 I (..\USER\stm32f4xx.h)(0x59C247A7)
 I (..\CORE\core_cm4.h)(0x59C247A7)
@@ -1178,3 +1184,6 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x59C247A7)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x59C247A7)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x59C247A7)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x59C247A7)
+F (..\HardWareDriver\Service\Matrix.c)(0x5214D75A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O2 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\HardWareDriver\HMC5883L -I ..\USER -I ..\IIC -I ..\HardWareDriver\AT45DB -I ..\HardWareDriver\IMU -I ..\HardWareDriver\Math -I ..\HardWareDriver\MPU6050 -I ..\HardWareDriver\Service -I ..\HardWareDriver\UART1 -I ..\HardWareDriver\USART_DMA -I ..\HardWareDriver\MS5611 -I ..\HardWareDriver\Kalman -I ..\HardWareDriver\Copter-I.\RTE\_Attitude-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\build\matrix.o --omf_browse ..\build\matrix.crf --depend ..\build\matrix.d)
+I (..\HardWareDriver\Service\Matrix.h)(0x50C94828)
+I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x588B9154)

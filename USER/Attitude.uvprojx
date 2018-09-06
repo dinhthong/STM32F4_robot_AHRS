@@ -560,6 +560,11 @@
               <FileType>1</FileType>
               <FilePath>..\HardWareDriver\Service\my_printf.c</FilePath>
             </File>
+            <File>
+              <FileName>Matrix.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HardWareDriver\Service\Matrix.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

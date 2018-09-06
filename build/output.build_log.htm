@@ -27,27 +27,14 @@ Project File Date:  09/06/2018
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Attitude'
-compiling HMC5883L.c...
 compiling main.c...
-main.c(56): warning:  #223-D: function "printf" declared implicitly
+main.c(57): warning:  #223-D: function "printf" declared implicitly
   		printf(" Quadcopter Hello World! ");
 main.c: 1 warning, 0 errors
-compiling IMU.c...
-..\HardWareDriver\IMU\IMU.c(418): warning:  #223-D: function "abs" declared implicitly
-      if(abs(acc_x) < acc_length) {
-..\HardWareDriver\IMU\IMU.c(421): warning:  #223-D: function "abs" declared implicitly
-      if(abs(acc_y) < acc_length) {
-..\HardWareDriver\IMU\IMU.c: 2 warnings, 0 errors
-compiling Fmath.c...
-compiling MPU6050.c...
-compiling ms5611.c...
-..\HardWareDriver\MS5611\ms5611.c(159): warning:  #61-D: integer operation result is out of range
-  	    TEMP2 = (dT * dT) / (2 << 30);
-..\HardWareDriver\MS5611\ms5611.c: 1 warning, 0 errors
 linking...
-Program Size: Code=29096 RO-data=1088 RW-data=512 ZI-data=1504  
+Program Size: Code=33144 RO-data=1088 RW-data=1272 ZI-data=4672  
 FromELF: creating hex file...
-"..\build\output.axf" - 0 Error(s), 4 Warning(s).
+"..\build\output.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -61,7 +48,7 @@ Package Vendor: Keil
   C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:16
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>

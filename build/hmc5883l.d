@@ -44,6 +44,7 @@
 ..\build\hmc5883l.o: ..\HardWareDriver\IMU\IMU.h
 ..\build\hmc5883l.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 ..\build\hmc5883l.o: ..\HardWareDriver\Service\common.h
+..\build\hmc5883l.o: ..\HardWareDriver\Service\Matrix.h
 ..\build\hmc5883l.o: ..\HardWareDriver\Kalman\Kalman.h
 ..\build\hmc5883l.o: ..\HardWareDriver\Copter\copter_config.h
 ..\build\hmc5883l.o: ..\USER\stm32f4xx_it.h

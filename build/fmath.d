@@ -45,6 +45,7 @@
 ..\build\fmath.o: ..\HardWareDriver\IMU\IMU.h
 ..\build\fmath.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 ..\build\fmath.o: ..\HardWareDriver\Service\common.h
+..\build\fmath.o: ..\HardWareDriver\Service\Matrix.h
 ..\build\fmath.o: ..\HardWareDriver\Kalman\Kalman.h
 ..\build\fmath.o: ..\HardWareDriver\Copter\copter_config.h
 ..\build\fmath.o: ..\USER\stm32f4xx_it.h

@@ -27,7 +27,7 @@ float ms5611_altitude, ms5611_altitude_offset;
 double dt;
 float rpy_1[3], rate_rpy[3]; //roll pitch yaw 
 float rpy_2[3];
-
+float rpy_kalman[3];
 float rate_alt;
 uint16_t j;
 uint32_t loop_var;
@@ -45,9 +45,10 @@ int main(void) {
 	  offset_gx=-72.0f;
 	  offset_gy = 18.0f; 
 	  offset_gz = 0.0f;
-	// 
+	// for Mahony
     Initialize_Q();	
-	
+	// Kalman
+	  Kalman_AHRS_init();
     begin();
     referencePressure = readPressure(0);
     TIM_PWM_Configuration();
@@ -65,7 +66,7 @@ int main(void) {
 		lastUpdate = TIM5->CNT;
         while(1) {
             GPIO_ToggleBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
-            IMU_getAttitude(rpy_1, rpy_2, rate_rpy);
+            IMU_getAttitude(rpy_1, rpy_2, rate_rpy, rpy_kalman);
             get_Baro();
 					  ms5611_altitude = EstAlt - ms5611_altitude_offset;
 

@@ -8,9 +8,9 @@
     float bias =0.0f;; // The gyro bias calculated by the Kalman filter - part of the 2x1 state vector
     float rate; // Unbiased rate calculated from the rate and the calculated bias - you have to call getAngle to update the rate
 
-    float P[2][2]; // Error covariance matrix - This is a 2x2 matrix
+    float _P[2][2]; // Error covariance matrix - This is a 2x2 matrix
 		float S;
-		float K[2];
+		float _K[2];
 		float y;
 		 float P00_temp;
 		  float P01_temp;
@@ -43,36 +43,36 @@ float Kalman_getAngle_roll(float newAngle, float newRate, float dt) {
 
     // Update estimation error covariance - Project the error covariance ahead
     /* Step 2 */
-    P[0][0] += dt * (dt*P[1][1] - P[0][1] - P[1][0] + Q_angle);
-    P[0][1] -= dt * P[1][1];
-    P[1][0] -= dt * P[1][1];
-    P[1][1] += (Q_bias) * dt;
+    _P[0][0] += dt * (dt*_P[1][1] - _P[0][1] - _P[1][0] + Q_angle);
+    _P[0][1] -= dt * _P[1][1];
+    _P[1][0] -= dt * _P[1][1];
+    _P[1][1] += (Q_bias) * dt;
 
     // Discrete Kalman filter measurement update equations - Measurement Update ("Correct")
     // Calculate Kalman gain - Compute the Kalman gain
     /* Step 4 */
-     S = P[0][0] + R_measure; // Estimate error
+     S = _P[0][0] + R_measure; // Estimate error
     /* Step 5 */
      // Kalman gain - This is a 2x1 vector
-    K[0] = P[0][0] / S;
-    K[1] = P[1][0] / S;
+    _K[0] = _P[0][0] / S;
+    _K[1] = _P[1][0] / S;
 
     // Calculate angle and bias - Update estimate with measurement zk (newAngle)
     /* Step 3 */
      y = newAngle - angle; // Angle difference
     /* Step 6 */
-    angle += K[0] * y;
-    bias += K[1] * y;
+    angle += _K[0] * y;
+    bias += _K[1] * y;
 
     // Calculate estimation error covariance - Update the error covariance
     /* Step 7 */
-    P00_temp = P[0][0];
-    P01_temp = P[0][1];
+    P00_temp = _P[0][0];
+    P01_temp = _P[0][1];
 
-    P[0][0] -= K[0] * P00_temp;
-    P[0][1] -= K[0] * P01_temp;
-    P[1][0] -= K[1] * P00_temp;
-    P[1][1] -= K[1] * P01_temp;
+    _P[0][0] -= _K[0] * P00_temp;
+    _P[0][1] -= _K[0] * P01_temp;
+    _P[1][0] -= _K[1] * P00_temp;
+    _P[1][1] -= _K[1] * P01_temp;
 
     return angle;
 };

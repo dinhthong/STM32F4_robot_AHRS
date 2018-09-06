@@ -47,3 +47,4 @@
 ..\build\imu.o: ..\HardWareDriver\Kalman\Kalman.h
 ..\build\imu.o: ..\HardWareDriver\Copter\copter_config.h
 ..\build\imu.o: ..\USER\stm32f4xx_it.h
+..\build\imu.o: ..\HardWareDriver\Service\Matrix.h

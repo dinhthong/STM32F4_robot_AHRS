@@ -45,6 +45,7 @@
 ..\build\ms5611.o: ..\HardWareDriver\IMU\IMU.h
 ..\build\ms5611.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 ..\build\ms5611.o: ..\HardWareDriver\Service\common.h
+..\build\ms5611.o: ..\HardWareDriver\Service\Matrix.h
 ..\build\ms5611.o: ..\HardWareDriver\Kalman\Kalman.h
 ..\build\ms5611.o: ..\HardWareDriver\Copter\copter_config.h
 ..\build\ms5611.o: ..\USER\stm32f4xx_it.h
