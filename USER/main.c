@@ -41,14 +41,14 @@ int main(void) {
 	  usart_printf_config(115200);
     Initial_System_Timer();  
     IMU_init();
+	  
 	// for simple_imu
 	  offset_gx=-72.0f;
 	  offset_gy = 18.0f; 
 	  offset_gz = 0.0f;
 	
-	offset_gyro[0] = offset_gyro[1] = offset_gyro[2] = 0.0f;
-//	offset_gyro[1] = offset_gy;
-//	offset_gyro[2] = offset_gz;
+	  offset_gyro[0] = offset_gyro[1] = offset_gyro[2] = 0.0f;
+
 //	  offset_gyro[0] = offset_gx;
 //	offset_gyro[1] = offset_gy;
 //	offset_gyro[2] = offset_gz;
@@ -61,7 +61,7 @@ int main(void) {
     referencePressure = readPressure(0);
     TIM_PWM_Configuration();
     exti_gpio_config();
-    delay_ms(1000);
+   // delay_ms(1000);
 		printf(" Quadcopter Hello World! ");
 	  // wait and check if Baro values are correct, because of LPF and baro code we need some iteration for data. 
 	  dt = 0.004;
@@ -71,6 +71,7 @@ int main(void) {
 		}
     ms5611_altitude_offset = EstAlt;
     // imu time counter last Update
+		MPU6050_Calculate_Gyro_Offset(&offset_gx,&offset_gy,&offset_gz,600);
 		lastUpdate = TIM5->CNT;
         while(1) {
             GPIO_ToggleBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);

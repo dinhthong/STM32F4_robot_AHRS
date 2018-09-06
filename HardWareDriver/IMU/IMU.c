@@ -134,7 +134,7 @@ void IMU_init(void)
 	HMC5883L_SetUp();
 	delay_ms(20);
 		//get raw offset.
-//	MPU6050_Calculate_Gyro_Offset(&offset_gx,&offset_gy,&offset_gz,800);
+//	
 }
 
 /**************************ʵ�ֺ���********************************************

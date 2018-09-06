@@ -33,20 +33,10 @@ main.h(14): warning:  #1-D: last line of file ends without a newline
 main.c(65): warning:  #223-D: function "printf" declared implicitly
   		printf(" Quadcopter Hello World! ");
 main.c: 2 warnings, 0 errors
-compiling IMU.c...
-..\HardWareDriver\IMU\IMU.c(261): warning:  #223-D: function "abs" declared implicitly
-      if(abs(acc_x) < acc_length) {
-..\HardWareDriver\IMU\IMU.c(264): warning:  #223-D: function "abs" declared implicitly
-      if(abs(acc_y) < acc_length) {
-..\HardWareDriver\IMU\IMU.c(705): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-    wx = 2*bx*(0.5 - q2q2 - q3q3) + 2*bz*(q1q3 - q0q2);
-..\HardWareDriver\IMU\IMU.c(707): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-    wz = 2*bx*(q0q2 + q1q3) + 2*bz*(0.5 - q1q1 - q2q2);  
-..\HardWareDriver\IMU\IMU.c: 4 warnings, 0 errors
 linking...
-Program Size: Code=33592 RO-data=1088 RW-data=1272 ZI-data=4688  
+Program Size: Code=33600 RO-data=1088 RW-data=1272 ZI-data=4688  
 FromELF: creating hex file...
-"..\build\output.axf" - 0 Error(s), 6 Warning(s).
+"..\build\output.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -60,7 +50,7 @@ Package Vendor: Keil
   C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:06
+Build Time Elapsed:  00:00:05
 </pre>
 </body>
 </html>

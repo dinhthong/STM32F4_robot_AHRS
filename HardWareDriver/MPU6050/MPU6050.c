@@ -272,7 +272,7 @@ void MPU6050_Calculate_Gyro_Offset(float *gx_offset,float *gy_offset,float *gz_o
 		tempgy += temp[4];
 		tempgz += temp[5];
 		//LED_Change();
-		delay_us(500);
+		delay_ms(5);
 	}
 				// raw to real deg/sec -> *2000/32767 = 1/16.4
 
