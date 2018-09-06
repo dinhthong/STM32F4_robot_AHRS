@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\build\output.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\build\output.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Thu Sep 06 17:13:11 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Thu Sep 06 17:30:52 2018
 <BR><P>
 <H3>Maximum Stack Usage =        376 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -159,7 +159,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[5d]"></a>main</STRONG> (Thumb, 280 bytes, Stack size 8 bytes, main.o(.text))
+<P><STRONG><a name="[5d]"></a>main</STRONG> (Thumb, 294 bytes, Stack size 8 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 376<LI>Call Chain = main &rArr; Initialize_Q &rArr; __hardfp_sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_printf_config
@@ -1318,7 +1318,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[c4]"></a>IMU_getValues</STRONG> (Thumb, 158 bytes, Stack size 40 bytes, imu.o(.text))
+<P><STRONG><a name="[c4]"></a>IMU_getValues</STRONG> (Thumb, 174 bytes, Stack size 40 bytes, imu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = IMU_getValues &rArr; MPU6050_getMotion6 &rArr; IICreadBytes &rArr; IIC_Read_Byte &rArr; IIC_NAck
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_getMotion6
@@ -1487,7 +1487,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[6f]"></a>Kalman_AHRS_init</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, imu.o(.text))
+<P><STRONG><a name="[6f]"></a>Kalman_AHRS_init</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, imu.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -1587,8 +1587,7 @@ Global Symbols
 <P><STRONG><a name="[c3]"></a>MPU6050_initialize</STRONG> (Thumb, 160 bytes, Stack size 40 bytes, mpu6050.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = MPU6050_initialize &rArr; MPU6050_getMotion6 &rArr; IICreadBytes &rArr; IIC_Read_Byte &rArr; IIC_NAck
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setI2CMasterModeEnabled
-<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setSleepEnabled
+<BR>[Calls]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setSleepEnabled
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setFullScaleAccelRange
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setFullScaleGyroRange
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setClockSource
@@ -1597,6 +1596,7 @@ Global Symbols
 <LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBits
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBit
 <LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setI2CBypassEnabled
+<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setI2CMasterModeEnabled
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_init
 </UL>
@@ -1768,10 +1768,10 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteByte
 <LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICreadByte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setI2CMasterModeEnabled
-<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setSleepEnabled
+<BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setSleepEnabled
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_initialize
 <LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setI2CBypassEnabled
+<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setI2CMasterModeEnabled
 </UL>
 
 <P><STRONG><a name="[fc]"></a>readRegister16</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, ms5611.o(.text))

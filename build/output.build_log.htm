@@ -27,20 +27,26 @@ Project File Date:  09/06/2018
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Attitude'
+compiling main.c...
+main.h(14): warning:  #1-D: last line of file ends without a newline
+  extern float offset_gyro[3];
+main.c(65): warning:  #223-D: function "printf" declared implicitly
+  		printf(" Quadcopter Hello World! ");
+main.c: 2 warnings, 0 errors
 compiling IMU.c...
-..\HardWareDriver\IMU\IMU.c(257): warning:  #223-D: function "abs" declared implicitly
+..\HardWareDriver\IMU\IMU.c(261): warning:  #223-D: function "abs" declared implicitly
       if(abs(acc_x) < acc_length) {
-..\HardWareDriver\IMU\IMU.c(260): warning:  #223-D: function "abs" declared implicitly
+..\HardWareDriver\IMU\IMU.c(264): warning:  #223-D: function "abs" declared implicitly
       if(abs(acc_y) < acc_length) {
-..\HardWareDriver\IMU\IMU.c(701): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+..\HardWareDriver\IMU\IMU.c(705): warning:  #1035-D: single-precision operand implicitly converted to double-precision
     wx = 2*bx*(0.5 - q2q2 - q3q3) + 2*bz*(q1q3 - q0q2);
-..\HardWareDriver\IMU\IMU.c(703): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+..\HardWareDriver\IMU\IMU.c(707): warning:  #1035-D: single-precision operand implicitly converted to double-precision
     wz = 2*bx*(q0q2 + q1q3) + 2*bz*(0.5 - q1q1 - q2q2);  
 ..\HardWareDriver\IMU\IMU.c: 4 warnings, 0 errors
 linking...
-Program Size: Code=33552 RO-data=1088 RW-data=1272 ZI-data=4672  
+Program Size: Code=33592 RO-data=1088 RW-data=1272 ZI-data=4688  
 FromELF: creating hex file...
-"..\build\output.axf" - 0 Error(s), 4 Warning(s).
+"..\build\output.axf" - 0 Error(s), 6 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -54,7 +60,7 @@ Package Vendor: Keil
   C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:05
+Build Time Elapsed:  00:00:06
 </pre>
 </body>
 </html>

@@ -45,6 +45,13 @@ int main(void) {
 	  offset_gx=-72.0f;
 	  offset_gy = 18.0f; 
 	  offset_gz = 0.0f;
+	
+	offset_gyro[0] = offset_gyro[1] = offset_gyro[2] = 0.0f;
+//	offset_gyro[1] = offset_gy;
+//	offset_gyro[2] = offset_gz;
+//	  offset_gyro[0] = offset_gx;
+//	offset_gyro[1] = offset_gy;
+//	offset_gyro[2] = offset_gz;
 	// for Mahony
     Initialize_Q();	
 	// Kalman

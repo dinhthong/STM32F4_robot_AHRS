@@ -26,6 +26,10 @@ pitch so quad moves to front -> pitch increase
 #include "IMU.h"
 #define DATA_SIZE 200
 
+float offset_gx,offset_gy,offset_gz;
+// for loop in getValues, same variables
+float offset_gyro[3];
+
 volatile double halfT ,elapsedT;
 volatile uint32_t lastUpdate, now;
 
@@ -104,7 +108,7 @@ float invSqrt(float x)
 Initialise MPU6050 and HMC5883, configure gyro and acc readings.
 
 *******************************************************************************/
-float offset_gx,offset_gy,offset_gz;
+
 void IMU_init(void)
 {
     GPIO_InitTypeDef GPIO_InitStructure;
@@ -170,7 +174,7 @@ void IMU_getValues(float *values)
 		else
 		{
 			// raw to real deg/sec -> *2000/32767 = 1/16.4
-			values[i] = ((float) accgyroval[i]) / 16.4f; 
+			values[i] = ((float) accgyroval[i] - offset_gyro[i-3]) / 16.4f; 
 		}
 	}
 	/* pass the address of values[6], after this function finishes, values[6],[7],[8] are filled with mag data
