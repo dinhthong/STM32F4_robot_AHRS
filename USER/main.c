@@ -21,15 +21,16 @@ float cut_off=10;
 /*Baro */
 double referencePressure;
 long realPressure;
-float fil_comple_alt, fil_lpf_alt, EstAlt;
+float fil_comple_alt, fil_lpf_alt, EstAlt, lastEstAlt, fil_baro,baroVel,acc_vel,vel;
 float absoluteAltitude, ms5611_temperature;
 float ms5611_altitude, ms5611_altitude_offset;
-double dt;
+double dt ,dtvel;
 float rpy_simple[3], rate_rpy[3]; //roll pitch yaw 
 float rpy_ahrs[3];
 float rpy_kalman[3];
-float rate_alt;
-uint16_t j;
+float rate_z, cf_acc_z;
+int32_t vel_lastupdate;
+uint16_t j, z_cnt;
 uint32_t loop_var;
 extern uint32_t lastUpdate;
 double alt_setpoint = 0.0f;
@@ -96,15 +97,43 @@ int main(void) {
 //		lastUpdate = TIM5->CNT;
         while(1) {
             GPIO_ToggleBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
-            IMU_getAttitude(rpy_simple, rpy_ahrs, rate_rpy, rpy_kalman);
+            IMU_getAttitude(rpy_simple, rpy_ahrs, rate_rpy, rpy_kalman, &cf_acc_z);
             get_Baro();
 					  ms5611_altitude = EstAlt - ms5611_altitude_offset;
 
-//								rpy[0] = rpy[1] = rpy[2] = 0.0f;
-
-//							  offset_gx=-72.0f;
-//							  offset_gy = 18.0f;
-//							  offset_gz = 0.0f;
+            			
+						// altitude PID
+						if ((micros()-vel_lastupdate)> 25000) {
+							
+							dtvel=(micros()-vel_lastupdate)*0.000001;
+						//	z_cnt = 0;
+											// calculate baro velocity based on ms5611 altitude.
+			       baroVel =4000*(EstAlt - lastEstAlt);
+							
+				//			baroVel =106.6f*(EstAlt - lastEstAlt)/dtvel;
+							
+             fil_baro=fil_baro*0.996 + baroVel*0.004;
+             lastEstAlt = EstAlt;
+             if(fil_baro>100) {
+              fil_baro=100;
+             }
+            if(fil_baro<-100) {
+              fil_baro=-100;   // constrain baro velocity +/- 100
+							}
+							// Using mpu accelemeter -> Integrator - velocity, cm/sec
+							acc_vel += cf_acc_z *0.004788;
+							// finally combine the two measurement
+							// apply Complimentary Filter to keep the calculated velocity based on baro velocity (i.e. near real velocity).
+							// By using CF it's possible to correct the drift of integrated accZ (velocity) without loosing the phase, i.e without delay
+							vel = acc_vel * 0.9975f + fil_baro * 0.0025f;
+						//	vel = acc_vel * 0.9955f + fil_baro * 0.0045f;
+							
+					//		vel = acc_vel * 0.9f + fil_baro * 0.1f;
+							//D
+							
+							vel_lastupdate = micros();
+						}
+						
 
 
             while ((micros() - loop_var )< 4000) {
