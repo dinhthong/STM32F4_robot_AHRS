@@ -174,7 +174,7 @@ void IMU_getValues(float *values)
 		else
 		{
 			// raw to real deg/sec -> *2000/32767 = 1/16.4
-			values[i] = ((float) accgyroval[i] - offset_gyro[i-3]) / 16.4f; 
+			values[i] = (float) accgyroval[i] / 16.4f; 
 		}
 	}
 	/* pass the address of values[6], after this function finishes, values[6],[7],[8] are filled with mag data
@@ -189,7 +189,7 @@ IMU_data is used by all function
 float acc_z_comp;
 float acc_x,acc_y,acc_z;
 static float IMU_data[9];
-void IMU_getAttitude(float *RPY,float *RPY_2,float *rate_RPY ,float *YPR_Kalman)
+void IMU_getAttitude(float *RPY,float *RPY_2,float *rate_RPY ,float *RPY_Kalman)
 {
 	/* This function to get the scaled values from GY-86 should be call here once. 
 	used by all algorithms
@@ -216,7 +216,12 @@ void IMU_getAttitude(float *RPY,float *RPY_2,float *rate_RPY ,float *YPR_Kalman)
 	  simple_imu(RPY, rate_RPY);
 	
 	  IMU_getRollPitchYaw(RPY_2);
-	  KalmanAHRS_getRollPitchYaw(YPR_Kalman);
+	  RPY_2[1] = -RPY_2[1];
+	  RPY_2[2] = -RPY_2[2];
+
+	  KalmanAHRS_getRollPitchYaw(RPY_Kalman);
+	  RPY_Kalman[1] = -RPY_Kalman[1];
+	RPY_Kalman[2] = -RPY_Kalman[2];
 }
 // imu code brokking.
 /**/
@@ -254,14 +259,14 @@ void simple_imu(float *RPY,float *rate_RPY) {
     RPY[2] += rateyaw * elapsedT * 2000/32767;
     //(1/250/65.5)*pi/180=0.000001066
 		// elapsedT * ( sensor conversion coeffient ) * M_PI/180.0f
-    RPY[1]-= RPY[0]*sin(rateyaw * elapsedT * (2000/32767) * M_PI/180);
-    RPY[0]+= RPY[1]*sin(rateyaw * elapsedT * (2000/32767) * M_PI/180);
+    RPY[1]-= RPY[0]*sin(rateyaw * elapsedT * 2000/32767 * M_PI/180);
+    RPY[0]+= RPY[1]*sin(rateyaw * elapsedT * 2000/32767 * M_PI/180);
 
     acc_length = sqrt((acc_x*acc_x)+(acc_y*acc_y)+(acc_z*acc_z));
-    if(abs(acc_x) < acc_length) {
+    if(fabs(acc_x) < acc_length) {
         angle_pitch_acc=-asin((float)acc_x/acc_length)*57.296f;
     }
-    if(abs(acc_y) < acc_length) {
+    if(fabs(acc_y) < acc_length) {
         angle_roll_acc=asin((float)acc_y/acc_length)*57.296f;
     }
 
@@ -270,6 +275,7 @@ void simple_imu(float *RPY,float *rate_RPY) {
 
     RPY[1] = RPY[1] * 0.975f +  kalAngleY * 0.025f;
     RPY[0] =  RPY[0] * 0.975f +   kalAngleX * 0.025f ;
+		
 //		acc_z_comp = acc_z_comp*0.9 + acc_z*0.1;
 //		*rate_z += acc_z_comp*elapsedT;
 }

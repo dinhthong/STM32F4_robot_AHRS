@@ -1,6 +1,5 @@
 ..\build\imu.o: ..\HardWareDriver\IMU\IMU.c
 ..\build\imu.o: ..\HardWareDriver\IMU\IMU.h
-..\build\imu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 ..\build\imu.o: ..\HardWareDriver\Service\common.h
 ..\build\imu.o: ..\HardWareDriver\Service\IOI2C.h
 ..\build\imu.o: ..\USER\stm32f4xx.h
@@ -47,4 +46,7 @@
 ..\build\imu.o: ..\HardWareDriver\Kalman\Kalman.h
 ..\build\imu.o: ..\HardWareDriver\Copter\copter_config.h
 ..\build\imu.o: ..\USER\stm32f4xx_it.h
+..\build\imu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+..\build\imu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\build\imu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\build\imu.o: ..\HardWareDriver\Service\Matrix.h

@@ -42,8 +42,10 @@
 ..\build\mpu6050.o: ..\HardWareDriver\HMC5883L\HMC5883L.h
 ..\build\mpu6050.o: ..\HardWareDriver\MS5611\ms5611.h
 ..\build\mpu6050.o: ..\HardWareDriver\IMU\IMU.h
-..\build\mpu6050.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 ..\build\mpu6050.o: ..\HardWareDriver\Service\common.h
+..\build\mpu6050.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+..\build\mpu6050.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\build\mpu6050.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\build\mpu6050.o: ..\HardWareDriver\Service\Matrix.h
 ..\build\mpu6050.o: ..\HardWareDriver\Kalman\Kalman.h
 ..\build\mpu6050.o: ..\HardWareDriver\Copter\copter_config.h

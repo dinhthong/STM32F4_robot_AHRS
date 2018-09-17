@@ -1,9 +1,10 @@
 #ifndef __IMU_H
 #define __IMU_H
-
-#include <math.h>
 #include "common.h"
 #include <math.h>
+//#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "Matrix.h"
 #define M_PI  (float)3.1415926535
 #define micros() TIM5->CNT
@@ -28,7 +29,7 @@ void Kalman_AHRSupdate(float gx, float gy, float gz, float ax, float ay, float a
 void KalmanAHRS_getRollPitchYaw(float * angles);
 
 float LPF(float x,float pre_value, float CUTOFF,float dt);
-void IMU_getAttitude(float *RPY, float *RPY_2,float *rate_RPY,float *YPR_Kalman);
+void IMU_getAttitude(float *RPY, float *RPY_2,float *rate_RPY,float *RPY_Kalman);
 void simple_imu(float *RPY, float *rate_RPY);
 
 #endif
