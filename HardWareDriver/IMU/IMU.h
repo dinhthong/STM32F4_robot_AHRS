@@ -10,7 +10,7 @@
 #define micros() TIM5->CNT
 float safe_asin(float v);
 extern float IMU_values[9];
-extern int16_t IMU_unscaled[6];
+extern int16_t MPU6050_raw[6];
 extern volatile float IMU_Pitch, IMU_Roll, IMU_Yaw, ACC_Pitch, ACC_Roll;	 //µ¥Î» ¶È
 
 extern volatile float IMU_GYROx, IMU_GYROy, IMU_GYROz;	
@@ -29,7 +29,7 @@ void Kalman_AHRSupdate(float gx, float gy, float gz, float ax, float ay, float a
 void KalmanAHRS_getRollPitchYaw(float * angles);
 
 float LPF(float x,float pre_value, float CUTOFF,float dt);
-void IMU_getAttitude(float *RPY, float *RPY_2,float *rate_RPY,float *RPY_Kalman);
+void IMU_getAttitude(float *RPY, float *RPY_2,float *rate_RPY,float *RPY_Kalman, float *cf_accZ);
 void simple_imu(float *RPY, float *rate_RPY);
 
 #endif

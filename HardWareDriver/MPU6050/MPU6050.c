@@ -245,12 +245,12 @@ void MPU6050_InitGyro_Offset(void)
 /*
 return data with unscaled gyro offset.
 */
-void MPU6050_Calculate_Gyro_Offset(float *gx_offset,float *gy_offset,float *gz_offset,uint16_t steps)
+void MPU6050_Calculate_MPU6050_Offset(float *ax_offset,float *ay_offset, float *az_offset,float *gx_offset,float *gy_offset, float *gz_offset, uint16_t steps)
 {
 	uint16_t i;
 	int16_t temp[6];
 	int32_t	tempgx = 0, tempgy = 0, tempgz = 0;
-//	int32_t	tempax = 0, tempay = 0, tempaz = 0;
+	int32_t	tempax = 0, tempay = 0, tempaz = 0;
 //	float Gx_offset = 0;
 //	float Gy_offset = 0;
 //	float Gz_offset = 0;
@@ -265,9 +265,9 @@ void MPU6050_Calculate_Gyro_Offset(float *gx_offset,float *gy_offset,float *gz_o
 	{
 		
 		MPU6050_getMotion6(&temp[0], &temp[1], &temp[2], &temp[3], &temp[4], &temp[5]);
-//		tempax += temp[0];
-//		tempay += temp[1];
-//		tempaz += temp[2];
+		tempax += temp[0];
+		tempay += temp[1];
+		tempaz += temp[2];
 		tempgx += temp[3];
 		tempgy += temp[4];
 		tempgz += temp[5];
@@ -279,6 +279,12 @@ void MPU6050_Calculate_Gyro_Offset(float *gx_offset,float *gy_offset,float *gz_o
 	*gx_offset = tempgx /steps; //MPU6050_FIFO[3][10];
 	*gy_offset = tempgy / steps; //MPU6050_FIFO[4][10];
 	*gz_offset = tempgz / steps; //MPU6050_FIFO[5][10];
+	
+		*ax_offset = tempax /steps; //MPU6050_FIFO[3][10];
+	*ay_offset = tempay / steps; //MPU6050_FIFO[4][10];
+	*az_offset = tempaz / steps; //MPU6050_FIFO[5][10];
+	
+	
 }
 // I added this function to my program but it fail to calculate correct angular velocity
 void Write_Gyro_Offset(int16_t GX_offset,int16_t GY_offset,int16_t GZ_offset)

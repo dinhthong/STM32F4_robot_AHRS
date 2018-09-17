@@ -28,7 +28,7 @@ double dt ,dtvel;
 float rpy_simple[3], rate_rpy[3]; //roll pitch yaw 
 float rpy_ahrs[3];
 float rpy_kalman[3];
-float rate_z, cf_acc_z;
+float cf_acc_z;
 int32_t vel_lastupdate;
 uint16_t j, z_cnt;
 uint32_t loop_var;
@@ -58,14 +58,14 @@ int main(void) {
 	
 	lastUpdate = TIM5->CNT;
 	  do {
-	  MPU6050_Calculate_Gyro_Offset(&offset_gx,&offset_gy,&offset_gz,1000);
+	  MPU6050_Calculate_MPU6050_Offset(&offset_ax,&offset_ay,&offset_az,&offset_gx,&offset_gy,&offset_gz,1000);
 	  dt = 0.004;
 		rpy_simple[0] = rpy_simple[1] = rpy_simple[2] = rate_rpy[0] = rate_rpy[1] = rate_rpy[2] = 0.0f;
 		for (j=0; j <= 300; j++){
 		//	get_Baro();
 			get_Baro();
 			// calculate Attitude also
-			IMU_getAttitude(rpy_simple, rpy_ahrs, rate_rpy, rpy_kalman);
+			IMU_getAttitude(rpy_simple, rpy_ahrs, rate_rpy, rpy_kalman, &cf_acc_z);
 	//		IMU_getAttitude(rpy_simple, rate_rpy);
 			delay_ms(4);
 			

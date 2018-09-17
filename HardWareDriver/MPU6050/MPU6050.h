@@ -389,7 +389,7 @@ void MPU6050_getMotion6(int16_t *ax, int16_t *ay, int16_t *az, int16_t *gx, int1
 //			    int16_t *az, int16_t *gx, int16_t *gy, int16_t *gz);
 uint8_t MPU6050_getDeviceID(void); //读取MPU6050的ID
 //void MPU6050_InitGyro_Offset(void);//初始化陀螺仪偏置
-void MPU6050_Calculate_Gyro_Offset(float *gx_offset,float *gy_offset,float *gz_offset,uint16_t steps);
+void MPU6050_Calculate_MPU6050_Offset(float *ax_offset,float *ay_offset, float *az_offset,float *gx_offset,float *gy_offset, float *gz_offset, uint16_t steps);
 void Write_Gyro_Offset(int16_t GX_offset,int16_t GY_offset,int16_t GZ_offset);
 #endif
 

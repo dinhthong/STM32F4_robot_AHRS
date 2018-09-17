@@ -11,4 +11,5 @@
 #define rc_aux channels[6]
 uint8_t read_mode(void);
 extern float offset_gx,offset_gy,offset_gz;
+extern float offset_ax, offset_ay, offset_az;
 extern float offset_gyro[3];

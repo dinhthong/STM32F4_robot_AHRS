@@ -27,6 +27,7 @@ pitch so quad moves to front -> pitch increase
 #define DATA_SIZE 200
 
 float offset_gx,offset_gy,offset_gz;
+float offset_ax, offset_ay, offset_az;
 // for loop in getValues, same variables
 float offset_gyro[3];
 
@@ -149,7 +150,7 @@ MPU6050 returns 6 values.
 3 4 5 are gyro data.
 
 */
-static int16_t IMU_unscaled[6];
+static int16_t MPU6050_raw[6];
 void IMU_getValues(float *values)
 {
 	int16_t accgyroval[6];
@@ -160,7 +161,7 @@ void IMU_getValues(float *values)
 	// added to watch the 'raw' values
 	for (i=0;i<6;i++)
 	{
-	IMU_unscaled[i]=accgyroval[i];
+	MPU6050_raw[i]=accgyroval[i];
 	}
 	
 	for(i = 0; i < 6; i++)
@@ -189,7 +190,7 @@ IMU_data is used by all function
 float acc_z_comp;
 float acc_x,acc_y,acc_z;
 static float IMU_data[9];
-void IMU_getAttitude(float *RPY,float *RPY_2,float *rate_RPY ,float *RPY_Kalman)
+void IMU_getAttitude(float *RPY,float *RPY_2,float *rate_RPY ,float *RPY_Kalman, float *cf_accZ)
 {
 	/* This function to get the scaled values from GY-86 should be call here once. 
 	used by all algorithms
@@ -221,7 +222,10 @@ void IMU_getAttitude(float *RPY,float *RPY_2,float *rate_RPY ,float *RPY_Kalman)
 
 	  KalmanAHRS_getRollPitchYaw(RPY_Kalman);
 	  RPY_Kalman[1] = -RPY_Kalman[1];
-	RPY_Kalman[2] = -RPY_Kalman[2];
+	  RPY_Kalman[2] = -RPY_Kalman[2];
+		  *cf_accZ = *cf_accZ*0.974 + 0.036*(MPU6050_raw[2] - offset_az);
+	  *cf_accZ/=2;
+
 }
 // imu code brokking.
 /**/
@@ -235,9 +239,9 @@ void simple_imu(float *RPY,float *rate_RPY) {
 	  acc_x = IMU_data[0];
     acc_y = IMU_data[1];
     acc_z = IMU_data[2];
-    gx = IMU_unscaled[3] - offset_gx;
-    gy = IMU_unscaled[4] - offset_gy;
-    gz = IMU_unscaled[5] - offset_gz;
+    gx = MPU6050_raw[3] - offset_gx;
+    gy = MPU6050_raw[4] - offset_gy;
+    gz = MPU6050_raw[5] - offset_gz;
 
     rateroll = LPF(gx,rateroll,10,elapsedT);
     ratepitch = LPF(gy,ratepitch,10,elapsedT);
