@@ -8,7 +8,7 @@
 	int64_t OFF2, SENS2;
 	int pressureState=0;
   int ut,up;
-void begin(void)
+void ms5611_begin(void)
 {
     reset();
     setOversampling(MS5611_ULTRA_HIGH_RES); // resolution

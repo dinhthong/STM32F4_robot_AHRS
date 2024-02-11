@@ -46,7 +46,7 @@ typedef enum
 
 
 	void ms5611WriteByte(unsigned char data);
-	void begin(void);
+	void ms5611_begin(void);
 	uint32_t readRawTemperature(void);
 	uint32_t readRawPressure(void);
 	double readTemperature(int compensation);

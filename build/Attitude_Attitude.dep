@@ -1,6 +1,6 @@
 Dependencies for Project 'Attitude', Target 'Attitude': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
-F (.\main.c)(0x60CAEFBC)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O2 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\HardWareDriver\HMC5883L -I ..\USER -I ..\IIC -I ..\HardWareDriver\IMU -I ..\HardWareDriver\Math -I ..\HardWareDriver\MPU6050 -I ..\HardWareDriver\Service -I ..\HardWareDriver\UART1 -I ..\HardWareDriver\USART_DMA -I ..\HardWareDriver\MS5611 -I ..\HardWareDriver\Kalman -I ..\HardWareDriver\Copter -I ..\HardWareDriver\px4-IC:\Users\User\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="534" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\build\main.o --omf_browse ..\build\main.crf --depend ..\build\main.d)
+F (.\main.c)(0x65C8A7E4)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O2 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\HardWareDriver\HMC5883L -I ..\USER -I ..\IIC -I ..\HardWareDriver\IMU -I ..\HardWareDriver\Math -I ..\HardWareDriver\MPU6050 -I ..\HardWareDriver\Service -I ..\HardWareDriver\UART1 -I ..\HardWareDriver\USART_DMA -I ..\HardWareDriver\MS5611 -I ..\HardWareDriver\Kalman -I ..\HardWareDriver\Copter -I ..\HardWareDriver\px4-IC:\Users\User\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="534" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\build\main.o --omf_browse ..\build\main.crf --depend ..\build\main.d)
 I (main.h)(0x60CAEFBC)
 I (..\HardWareDriver\Service\common.h)(0x60CAF018)
 I (..\HardWareDriver\Service\IOI2C.h)(0x60CAF018)
@@ -42,7 +42,7 @@ I (..\SYSTEM\sys\sys.h)(0x60CAF018)
 I (..\SYSTEM\delay\delay.h)(0x60CAF018)
 I (..\HardWareDriver\MPU6050\MPU6050.h)(0x60CAF018)
 I (..\HardWareDriver\HMC5883L\HMC5883L.h)(0x60CAF016)
-I (..\HardWareDriver\MS5611\ms5611.h)(0x60CAF018)
+I (..\HardWareDriver\MS5611\ms5611.h)(0x65C8A6C0)
 I (..\HardWareDriver\IMU\IMU.h)(0x60CAF016)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5E8E2EB2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
@@ -837,7 +837,7 @@ I (..\SYSTEM\sys\sys.h)(0x60CAF018)
 I (..\SYSTEM\delay\delay.h)(0x60CAF018)
 I (..\HardWareDriver\Service\common.h)(0x60CAF018)
 I (..\HardWareDriver\MPU6050\MPU6050.h)(0x60CAF018)
-I (..\HardWareDriver\MS5611\ms5611.h)(0x60CAF018)
+I (..\HardWareDriver\MS5611\ms5611.h)(0x65C8A6C0)
 I (..\HardWareDriver\IMU\IMU.h)(0x60CAF016)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5E8E2EB2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
@@ -888,7 +888,7 @@ I (..\SYSTEM\sys\sys.h)(0x60CAF018)
 I (..\SYSTEM\delay\delay.h)(0x60CAF018)
 I (..\HardWareDriver\MPU6050\MPU6050.h)(0x60CAF018)
 I (..\HardWareDriver\HMC5883L\HMC5883L.h)(0x60CAF016)
-I (..\HardWareDriver\MS5611\ms5611.h)(0x60CAF018)
+I (..\HardWareDriver\MS5611\ms5611.h)(0x65C8A6C0)
 I (..\HardWareDriver\Kalman\Kalman.h)(0x60CAF016)
 I (..\HardWareDriver\Copter\copter_config.h)(0x60CAF016)
 I (..\USER\stm32f4xx_it.h)(0x60CAEFBA)
@@ -938,7 +938,7 @@ I (..\SYSTEM\sys\sys.h)(0x60CAF018)
 I (..\SYSTEM\delay\delay.h)(0x60CAF018)
 I (..\HardWareDriver\MPU6050\MPU6050.h)(0x60CAF018)
 I (..\HardWareDriver\HMC5883L\HMC5883L.h)(0x60CAF016)
-I (..\HardWareDriver\MS5611\ms5611.h)(0x60CAF018)
+I (..\HardWareDriver\MS5611\ms5611.h)(0x65C8A6C0)
 I (..\HardWareDriver\IMU\IMU.h)(0x60CAF016)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5E8E2EB2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
@@ -988,7 +988,7 @@ I (..\SYSTEM\sys\sys.h)(0x60CAF018)
 I (..\HardWareDriver\Service\common.h)(0x60CAF018)
 I (..\HardWareDriver\Service\IOI2C.h)(0x60CAF018)
 I (..\HardWareDriver\HMC5883L\HMC5883L.h)(0x60CAF016)
-I (..\HardWareDriver\MS5611\ms5611.h)(0x60CAF018)
+I (..\HardWareDriver\MS5611\ms5611.h)(0x65C8A6C0)
 I (..\HardWareDriver\IMU\IMU.h)(0x60CAF016)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5E8E2EB2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
@@ -1036,8 +1036,8 @@ I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x60CAF012)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x60CAF012)
 I (..\SYSTEM\sys\sys.h)(0x60CAF018)
 I (..\SYSTEM\delay\delay.h)(0x60CAF018)
-F (..\HardWareDriver\MS5611\ms5611.c)(0x60CAF018)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O2 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\HardWareDriver\HMC5883L -I ..\USER -I ..\IIC -I ..\HardWareDriver\IMU -I ..\HardWareDriver\Math -I ..\HardWareDriver\MPU6050 -I ..\HardWareDriver\Service -I ..\HardWareDriver\UART1 -I ..\HardWareDriver\USART_DMA -I ..\HardWareDriver\MS5611 -I ..\HardWareDriver\Kalman -I ..\HardWareDriver\Copter -I ..\HardWareDriver\px4-IC:\Users\User\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="534" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\build\ms5611.o --omf_browse ..\build\ms5611.crf --depend ..\build\ms5611.d)
-I (..\HardWareDriver\MS5611\ms5611.h)(0x60CAF018)
+F (..\HardWareDriver\MS5611\ms5611.c)(0x65C8A6B7)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O2 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\FWLIB\inc -I ..\HardWareDriver\HMC5883L -I ..\USER -I ..\IIC -I ..\HardWareDriver\IMU -I ..\HardWareDriver\Math -I ..\HardWareDriver\MPU6050 -I ..\HardWareDriver\Service -I ..\HardWareDriver\UART1 -I ..\HardWareDriver\USART_DMA -I ..\HardWareDriver\MS5611 -I ..\HardWareDriver\Kalman -I ..\HardWareDriver\Copter -I ..\HardWareDriver\px4-IC:\Users\User\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="534" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\build\ms5611.o --omf_browse ..\build\ms5611.crf --depend ..\build\ms5611.d)
+I (..\HardWareDriver\MS5611\ms5611.h)(0x65C8A6C0)
 I (..\USER\stm32f4xx.h)(0x60CAEFBA)
 I (..\CORE\core_cm4.h)(0x60CAEFBA)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)

@@ -1,9 +1,13 @@
 /*
 */
 #include "main.h"
+/*
+	define available sensors macros
+*/
+#define MS5611 
+
+static void process_ms5611(void);
 void get_Baro(void);
-
-
 void Initial_System_Timer(void)
 {
 	RCC->APB1ENR |= 0x0008;	
@@ -41,13 +45,18 @@ int main(void) {
     delay_init(168);
     delay_ms(200);
     board_leds_config();
+		/*
+			output PWMs
+		*/
 	  TIM_PWM_Configuration();
     exti_gpio_config();
 	  usart_printf_config(115200);
     Initial_System_Timer();  
     IMU_init();
-	  begin();
+		#ifdef MS5611
+	  ms5611_begin();
     referencePressure = readPressure(0);
+		#endif
 	// for simple_imu
 //	  offset_gx=-72.0f;
 //	  offset_gy = 18.0f; 
@@ -63,8 +72,6 @@ int main(void) {
 	  dt = 0.004;
 		rpy_simple[0] = rpy_simple[1] = rpy_simple[2] = rate_rpy[0] = rate_rpy[1] = rate_rpy[2] = 0.0f;
 		for (j=0; j <= 300; j++){
-		//	get_Baro();
-			get_Baro();
 			// calculate Attitude also
 			IMU_getAttitude(rpy_simple, rpy_ahrs, rate_rpy, rpy_kalman, rpy_new, &cf_acc_z);
 	//		IMU_getAttitude(rpy_simple, rate_rpy);
@@ -86,57 +93,26 @@ int main(void) {
 
    // delay_ms(1000);
 		printf(" Quadcopter Hello World! ");
+		#ifdef MS5611
 	  // wait and check if Baro values are correct, because of LPF and baro code we need some iteration for data. 
-//	  dt = 0.004;
-//		for (j=0; j <= 300; j++){
-//			get_Baro();
-//			delay_ms(4);
-//		}
+	  dt = 0.004;
+		for (uint16_t j=0; j <= 300; j++){
+			get_Baro();
+			delay_ms(4);
+		}
     ms5611_altitude_offset = EstAlt;
+		#endif
     // imu time counter last Update
 	//	MPU6050_Calculate_Gyro_Offset(&offset_gx,&offset_gy,&offset_gz,600);
 //		lastUpdate = TIM5->CNT;
         while(1) {
             GPIO_ToggleBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
             IMU_getAttitude(rpy_simple, rpy_ahrs, rate_rpy, rpy_kalman, rpy_new, &cf_acc_z);
-            get_Baro();
-					  ms5611_altitude = EstAlt - ms5611_altitude_offset;
-
-            			
-						// altitude PID
-						if ((micros()-vel_lastupdate)> 25000) {
-							
-							dtvel=(micros()-vel_lastupdate)*0.000001;
-						//	z_cnt = 0;
-											// calculate baro velocity based on ms5611 altitude.
-			       baroVel =4000*(EstAlt - lastEstAlt);
-							
-				//			baroVel =106.6f*(EstAlt - lastEstAlt)/dtvel;
-							
-             fil_baro=fil_baro*0.996 + baroVel*0.004;
-             lastEstAlt = EstAlt;
-             if(fil_baro>100) {
-              fil_baro=100;
-             }
-            if(fil_baro<-100) {
-              fil_baro=-100;   // constrain baro velocity +/- 100
-							}
-							// Using mpu accelemeter -> Integrator - velocity, cm/sec
-							acc_vel += cf_acc_z *0.004788;
-							// finally combine the two measurement
-							// apply Complimentary Filter to keep the calculated velocity based on baro velocity (i.e. near real velocity).
-							// By using CF it's possible to correct the drift of integrated accZ (velocity) without loosing the phase, i.e without delay
-							vel = acc_vel * 0.9975f + fil_baro * 0.0025f;
-						//	vel = acc_vel * 0.9955f + fil_baro * 0.0045f;
-							
-					//		vel = acc_vel * 0.9f + fil_baro * 0.1f;
-							//D
-							
-							vel_lastupdate = micros();
-						}
-						
-
-
+					
+						#ifdef MS5611
+						process_ms5611();
+						#endif
+						// ensure the loop runs at 4ms
             while ((micros() - loop_var )< 4000) {
 		        };
 			 
@@ -144,6 +120,45 @@ int main(void) {
             loop_var = micros();
     }
 }
+
+static void process_ms5611(void) {
+				 get_Baro();
+				ms5611_altitude = EstAlt - ms5611_altitude_offset;
+
+							
+				// altitude PID
+				if ((micros()-vel_lastupdate)> 25000) {
+					
+					dtvel=(micros()-vel_lastupdate)*0.000001;
+				//	z_cnt = 0;
+									// calculate baro velocity based on ms5611 altitude.
+				 baroVel =4000*(EstAlt - lastEstAlt);
+					
+		//			baroVel =106.6f*(EstAlt - lastEstAlt)/dtvel;
+					
+				 fil_baro=fil_baro*0.996 + baroVel*0.004;
+				 lastEstAlt = EstAlt;
+				 if(fil_baro>100) {
+					fil_baro=100;
+				 }
+				if(fil_baro<-100) {
+					fil_baro=-100;   // constrain baro velocity +/- 100
+					}
+					// Using mpu accelemeter -> Integrator - velocity, cm/sec
+					acc_vel += cf_acc_z *0.004788;
+					// finally combine the two measurement
+					// apply Complimentary Filter to keep the calculated velocity based on baro velocity (i.e. near real velocity).
+					// By using CF it's possible to correct the drift of integrated accZ (velocity) without loosing the phase, i.e without delay
+					vel = acc_vel * 0.9975f + fil_baro * 0.0025f;
+				//	vel = acc_vel * 0.9955f + fil_baro * 0.0045f;
+					
+			//		vel = acc_vel * 0.9f + fil_baro * 0.1f;
+					//D
+					
+					vel_lastupdate = micros();
+				}
+}
+
 
 void get_Baro(void){
 	  

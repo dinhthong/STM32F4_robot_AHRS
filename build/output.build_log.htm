@@ -21,103 +21,26 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.8.0
 Dialog DLL:      TCM.DLL V1.48.0.0
  
 <h2>Project:</h2>
-C:\Users\User\Downloads\robot_IMU\USER\Attitude.uvprojx
+C:\Users\User\Downloads\STM32F4_robot_AHRS\USER\Attitude.uvprojx
 Project File Date:  02/11/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Attitude'
-assembling startup_stm32f40_41xxx.s...
-compiling stm32f4xx_flash_ramfunc.c...
-compiling misc.c...
-compiling system_stm32f4xx.c...
-compiling stm32f4xx_dma2d.c...
-compiling stm32f4xx_dma.c...
-compiling stm32f4xx_exti.c...
-compiling stm32f4xx_dbgmcu.c...
-compiling copter_config.c...
-compiling stm32f4xx_gpio.c...
-compiling stm32f4xx_it.c...
-stm32f4xx_it.c(195): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-              temp_sonar = alt_sonar*0.8+temp_sonar*0.2;
-stm32f4xx_it.c(195): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-              temp_sonar = alt_sonar*0.8+temp_sonar*0.2;
-stm32f4xx_it.c: 2 warnings, 0 errors
-compiling stm32f4xx_i2c.c...
-compiling stm32f4xx_fsmc.c...
-compiling stm32f4xx_rcc.c...
 compiling main.c...
 main.h(15): warning:  #1-D: last line of file ends without a newline
   extern float offset_gyro[3];
-main.c(116): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-               fil_baro=fil_baro*0.996 + baroVel*0.004;
-main.c(116): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-               fil_baro=fil_baro*0.996 + baroVel*0.004;
-main.c(125): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  							acc_vel += cf_acc_z *0.004788;
+main.c(139): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  				 fil_baro=fil_baro*0.996 + baroVel*0.004;
+main.c(139): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  				 fil_baro=fil_baro*0.996 + baroVel*0.004;
+main.c(148): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  					acc_vel += cf_acc_z *0.004788;
 main.c: 4 warnings, 0 errors
-compiling stm32f4xx_rng.c...
-compiling stm32f4xx_syscfg.c...
-compiling stm32f4xx_usart.c...
-compiling stm32f4xx_tim.c...
-compiling stm32f4xx_spi.c...
-compiling stm32f4xx_adc.c...
-compiling delay.c...
-compiling sys.c...
-compiling HMC5883L.c...
-compiling Matrix.c...
-..\HardWareDriver\Service\Matrix.c(203): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  	if (fmatrix_vlaue == 0.0)
-..\HardWareDriver\Service\Matrix.c(300): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  		ftemp = *(fMatrixA+l) = 1.0/(*(fMatrixA+l));
-..\HardWareDriver\Service\Matrix.c: 2 warnings, 0 errors
-compiling MPU6050.c...
-compiling my_printf.c...
-compiling Kalman.c...
-compiling IOI2C.c...
-compiling Fmath.c...
-compiling ms5611.c...
-..\HardWareDriver\MS5611\ms5611.c(159): warning:  #61-D: integer operation result is out of range
-  	    TEMP2 = (dT * dT) / (2 << 30);
-..\HardWareDriver\MS5611\ms5611.c: 1 warning, 0 errors
-compiling IMU.c...
-..\HardWareDriver\IMU\IMU.c(242): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  		  *cf_accZ = *cf_accZ*0.974 + 0.036*(MPU6050_raw[2] - offset_az);
-..\HardWareDriver\IMU\IMU.c(242): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  		  *cf_accZ = *cf_accZ*0.974 + 0.036*(MPU6050_raw[2] - offset_az);
-..\HardWareDriver\IMU\IMU.c(738): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      wx = 2*bx*(0.5 - q2q2 - q3q3) + 2*bz*(q1q3 - q0q2);
-..\HardWareDriver\IMU\IMU.c(740): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      wz = 2*bx*(q0q2 + q1q3) + 2*bz*(0.5 - q1q1 - q2q2);  
-..\HardWareDriver\IMU\IMU.c(801): warning:  #9-D: nested comment is not allowed
-  ///////////////////////////////////////////////////*/
-..\HardWareDriver\IMU\IMU.c(834): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  		 hx = 2*mx*(0.50 - q2q2 - q3q3) + 2*my*(q1q2 - q0q3) + 2*mz*(q1q3 + q0q2);
-..\HardWareDriver\IMU\IMU.c(835): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  		 hy = 2*mx*(q1q2 + q0q3) + 2*my*(0.50 - q1q1 - q3q3) + 2*mz*(q2q3 - q0q1);
-..\HardWareDriver\IMU\IMU.c(836): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  		 hz = 2*mx*(q1q3 - q0q2) + 2*my*(q2q3 + q0q1) + 2*mz*(0.50 - q1q1 -q2q2);    
-..\HardWareDriver\IMU\IMU.c(847): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  		 wx = 2*bx*(0.5 - q2q2 - q3q3) + 2*bz*(q1q3 - q0q2);
-..\HardWareDriver\IMU\IMU.c(849): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  		 wz = 2*bx*(q0q2 + q1q3) + 2*bz*(0.5 - q1q1 - q2q2); 
-..\HardWareDriver\IMU\IMU.c(882): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  			k10=0.5 * (-gx*q__1 - gy*q__2 - gz*q__2);
-..\HardWareDriver\IMU\IMU.c(883): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  			k11=0.5 * ( gx*q__0 + gz*q__2 - gy*q__2);
-..\HardWareDriver\IMU\IMU.c(884): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  			k12=0.5 * ( gy*q__0 - gz*q__1 + gx*q__2);
-..\HardWareDriver\IMU\IMU.c(885): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  			k13=0.5 * ( gz*q__0 + gy*q__1 - gx*q__2);
-..\HardWareDriver\IMU\IMU.c(917): warning:  #1-D: last line of file ends without a newline
-  }
-..\HardWareDriver\IMU\IMU.c(94): warning:  #550-D: variable "q__3"  was set but never used
-  static float q__0=1.0f,q__1=0.0f,q__2=0.0f,q__3=0.0f;
-..\HardWareDriver\IMU\IMU.c: 16 warnings, 0 errors
 linking...
-Program Size: Code=41744 RO-data=1088 RW-data=1408 ZI-data=4688  
+Program Size: Code=41792 RO-data=1088 RW-data=1408 ZI-data=4688  
 FromELF: creating hex file...
-"..\build\output.axf" - 0 Error(s), 25 Warning(s).
+"..\build\output.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -130,7 +53,7 @@ Package Vendor: Keil
   C:\Users\User\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:05
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>
