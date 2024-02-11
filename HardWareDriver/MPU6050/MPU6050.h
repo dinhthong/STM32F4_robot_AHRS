@@ -365,7 +365,7 @@
 #define MPU6050_WHO_AM_I_LENGTH     6
 
 
-//MPU6050内部低通滤波设置
+//MPU6050 digital low pass filter.
 
 //#define MPU6050_DLPF  MPU6050_DLPF_BW_256 		//256Hz低通滤波
 //#define MPU6050_DLPF  MPU6050_DLPF_BW_188 		//188Hz低通滤波

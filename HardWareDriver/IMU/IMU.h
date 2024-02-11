@@ -29,8 +29,8 @@ void Kalman_AHRSupdate(float gx, float gy, float gz, float ax, float ay, float a
 void KalmanAHRS_getRollPitchYaw(float * angles);
 
 float LPF(float x,float pre_value, float CUTOFF,float dt);
-void IMU_getAttitude(float *RPY, float *RPY_2,float *rate_RPY,float *RPY_Kalman, float *cf_accZ);
+void IMU_getAttitude(float *RPY, float *RPY_2, float *rate_RPY,float *RPY_Kalman,float *RPY_3, float *cf_accZ);
 void simple_imu(float *RPY, float *rate_RPY);
-
+void AHRSupdate(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz,float *roll,float *pitch,float *yaw);
 #endif
 

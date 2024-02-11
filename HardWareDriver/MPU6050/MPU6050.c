@@ -146,7 +146,7 @@ void MPU6050_initialize(void)
 	IICwriteBit(devAddr, MPU6050_RA_INT_PIN_CFG, MPU6050_INTCFG_INT_OPEN_BIT, 0);
 	IICwriteBit(devAddr, MPU6050_RA_INT_PIN_CFG, MPU6050_INTCFG_LATCH_INT_EN_BIT, 1);
 	IICwriteBit(devAddr, MPU6050_RA_INT_PIN_CFG, MPU6050_INTCFG_INT_RD_CLEAR_BIT, 1);
-	// When DATA is READY -> DRY pin <-> PC9 is set
+	// When DATA is READY -> DRY pin <-> PC9 is set. Programmable Interrupt feature of MPU6050.
 	IICwriteBit(devAddr, MPU6050_RA_INT_ENABLE, MPU6050_INTERRUPT_DATA_RDY_BIT, 1);
 
 	IICwriteBits(devAddr, MPU6050_RA_CONFIG, 7, 8, MPU6050_DLPF); //…Ë÷√MPU6050µÕÕ®¬À≤®
@@ -161,7 +161,7 @@ void MPU6050_initialize(void)
 
 unsigned char MPU6050_is_DRY(void)
 {
-	if(GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_9) == Bit_SET)
+	if(GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_9) == Bit_SET)
 	{
 		return 1;
 	}
@@ -188,8 +188,7 @@ void MPU6050_getMotion6(int16_t *ax, int16_t *ay, int16_t *az, int16_t *gx, int1
 		MPU6050_Lastgx = (((int16_t)buffer[8]) << 8) | buffer[9];
 		MPU6050_Lastgy = (((int16_t)buffer[10]) << 8) | buffer[11];
 		MPU6050_Lastgz = (((int16_t)buffer[12]) << 8) | buffer[13];
-		MPU6050_newValues(MPU6050_Lastax, MPU6050_Lastay, MPU6050_Lastaz
-				  , MPU6050_Lastgx, MPU6050_Lastgy, MPU6050_Lastgz);
+		MPU6050_newValues(MPU6050_Lastax, MPU6050_Lastay, MPU6050_Lastaz, MPU6050_Lastgx, MPU6050_Lastgy, MPU6050_Lastgz);
 		// Average calculated raw values
 		*ax  = MPU6050_FIFO[0][10];
 		*ay  = MPU6050_FIFO[1][10];
@@ -280,7 +279,7 @@ void MPU6050_Calculate_MPU6050_Offset(float *ax_offset,float *ay_offset, float *
 	*gy_offset = tempgy / steps; //MPU6050_FIFO[4][10];
 	*gz_offset = tempgz / steps; //MPU6050_FIFO[5][10];
 	
-		*ax_offset = tempax /steps; //MPU6050_FIFO[3][10];
+	*ax_offset = tempax /steps; //MPU6050_FIFO[3][10];
 	*ay_offset = tempay / steps; //MPU6050_FIFO[4][10];
 	*az_offset = tempaz / steps; //MPU6050_FIFO[5][10];
 	

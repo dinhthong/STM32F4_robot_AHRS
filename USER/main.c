@@ -28,6 +28,7 @@ double dt ,dtvel;
 float rpy_simple[3], rate_rpy[3]; //roll pitch yaw 
 float rpy_ahrs[3];
 float rpy_kalman[3];
+float rpy_new[3];
 float cf_acc_z;
 int32_t vel_lastupdate;
 uint16_t j, z_cnt;
@@ -40,12 +41,12 @@ int main(void) {
     delay_init(168);
     delay_ms(200);
     board_leds_config();
-	    TIM_PWM_Configuration();
+	  TIM_PWM_Configuration();
     exti_gpio_config();
 	  usart_printf_config(115200);
     Initial_System_Timer();  
     IMU_init();
-	      begin();
+	  begin();
     referencePressure = readPressure(0);
 	// for simple_imu
 //	  offset_gx=-72.0f;
@@ -65,7 +66,7 @@ int main(void) {
 		//	get_Baro();
 			get_Baro();
 			// calculate Attitude also
-			IMU_getAttitude(rpy_simple, rpy_ahrs, rate_rpy, rpy_kalman, &cf_acc_z);
+			IMU_getAttitude(rpy_simple, rpy_ahrs, rate_rpy, rpy_kalman, rpy_new, &cf_acc_z);
 	//		IMU_getAttitude(rpy_simple, rate_rpy);
 			delay_ms(4);
 			
@@ -97,7 +98,7 @@ int main(void) {
 //		lastUpdate = TIM5->CNT;
         while(1) {
             GPIO_ToggleBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
-            IMU_getAttitude(rpy_simple, rpy_ahrs, rate_rpy, rpy_kalman, &cf_acc_z);
+            IMU_getAttitude(rpy_simple, rpy_ahrs, rate_rpy, rpy_kalman, rpy_new, &cf_acc_z);
             get_Baro();
 					  ms5611_altitude = EstAlt - ms5611_altitude_offset;
 
