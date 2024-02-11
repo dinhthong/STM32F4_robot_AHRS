@@ -28,17 +28,17 @@ Project File Date:  02/11/2024
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Attitude'
 compiling main.c...
-main.h(15): warning:  #1-D: last line of file ends without a newline
-  extern float offset_gyro[3];
-main.c(139): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+main.c(135): warning:  #1035-D: single-precision operand implicitly converted to double-precision
   				 fil_baro=fil_baro*0.996 + baroVel*0.004;
-main.c(139): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+main.c(135): warning:  #1035-D: single-precision operand implicitly converted to double-precision
   				 fil_baro=fil_baro*0.996 + baroVel*0.004;
-main.c(148): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+main.c(144): warning:  #1035-D: single-precision operand implicitly converted to double-precision
   					acc_vel += cf_acc_z *0.004788;
+main.c(120): warning:  #177-D: function "process_ms5611"  was declared but never referenced
+  static void process_ms5611(void) {
 main.c: 4 warnings, 0 errors
 linking...
-Program Size: Code=41792 RO-data=1088 RW-data=1408 ZI-data=4688  
+Program Size: Code=41480 RO-data=1088 RW-data=1360 ZI-data=4688  
 FromELF: creating hex file...
 "..\build\output.axf" - 0 Error(s), 4 Warning(s).
 
@@ -53,7 +53,7 @@ Package Vendor: Keil
   C:\Users\User\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

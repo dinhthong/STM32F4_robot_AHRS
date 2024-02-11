@@ -51,3 +51,4 @@
 ..\build\main.o: ..\HardWareDriver\Kalman\Kalman.h
 ..\build\main.o: ..\HardWareDriver\Copter\copter_config.h
 ..\build\main.o: ..\USER\stm32f4xx_it.h
+..\build\main.o: ..\HardWareDriver\IMU\Kalman_AHRS.h

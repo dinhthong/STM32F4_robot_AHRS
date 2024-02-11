@@ -5,8 +5,14 @@
 
 #ifndef __common_H
 #define __common_H
-#include "IOI2C.h"
 
+/*
+	define available sensors macros
+*/
+//#define MS5611 
+//#define HMC5883
+
+#include "IOI2C.h"
 #include "delay.h"
 #include "MPU6050.h"
 #include "HMC5883L.h"

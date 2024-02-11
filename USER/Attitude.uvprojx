@@ -563,6 +563,11 @@
               <FileType>1</FileType>
               <FilePath>..\HardWareDriver\Service\Matrix.c</FilePath>
             </File>
+            <File>
+              <FileName>Kalman_AHRS.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HardWareDriver\IMU\Kalman_AHRS.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

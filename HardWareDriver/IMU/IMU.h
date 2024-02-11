@@ -9,9 +9,10 @@
 #define M_PI  (float)3.1415926535
 #define micros() TIM5->CNT
 float safe_asin(float v);
+float invSqrt(float x);
 extern float IMU_values[9];
 extern int16_t MPU6050_raw[6];
-extern volatile float IMU_Pitch, IMU_Roll, IMU_Yaw, ACC_Pitch, ACC_Roll;	 //单位 度
+extern volatile float IMU_Pitch, IMU_Roll, IMU_Yaw, ACC_Pitch, ACC_Roll;	 //锟斤拷位 锟斤拷
 
 extern volatile float IMU_GYROx, IMU_GYROy, IMU_GYROz;	
 extern volatile float acc_vector;  
@@ -22,11 +23,6 @@ void IMU_init(void);
 void Initialize_Q(void);
 void IMU_getQ(float *q,volatile float IMU_values[9]);
 void IMU_getRollPitchYaw(float *angles);
-
-void Kalman_AHRS_init(void);
-void KalmanAHRS_getQ(float * q,volatile float IMU_values[9]);
-void Kalman_AHRSupdate(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz);
-void KalmanAHRS_getRollPitchYaw(float * angles);
 
 float LPF(float x,float pre_value, float CUTOFF,float dt);
 void IMU_getAttitude(float *RPY, float *RPY_2, float *rate_RPY,float *RPY_Kalman,float *RPY_3, float *cf_accZ);

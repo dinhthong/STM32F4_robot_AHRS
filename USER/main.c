@@ -1,10 +1,7 @@
 /*
 */
 #include "main.h"
-/*
-	define available sensors macros
-*/
-#define MS5611 
+#include "Kalman_AHRS.h"
 
 static void process_ms5611(void);
 void get_Baro(void);
