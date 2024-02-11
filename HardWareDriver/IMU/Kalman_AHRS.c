@@ -26,7 +26,7 @@
 #include "Kalman_AHRS.h"
 #include "IMU.h"
 // variables for quaternion based Kalman Filter
-volatile float q_0, q_1, q_2, q_3,w1,w2,w3; // È«¾ÖËÄÔªÊý
+volatile float kq_0, kq_1, kq_2, kq_3,w1,w2,w3; // È«¾ÖËÄÔªÊý
 
 float P[49]={0.0001,0,0,0,0,0,0,
 	        0,0.0001,0,0,0,0,0,
@@ -84,10 +84,10 @@ void Kalman_AHRS_init(void)
 //  	lastUpdate = micros();//¸üÐÂÊ±¼ä
 //  	now = micros();
 
-    q_0=1.0;
-    q_1=0;
-    q_2=0;
-    q_3=0;
+    kq_0=1.0;
+    kq_1=0;
+    kq_2=0;
+    kq_3=0;
 }
 
 volatile float q_kalman_rpy[3];
@@ -114,10 +114,10 @@ void KalmanAHRS_getQ(float * q,volatile float IMU_values[9]) {
    Kalman_AHRSupdate(IMU_values[3] * M_PI/180, IMU_values[4] * M_PI/180, IMU_values[5] * M_PI/180,
    IMU_values[0], IMU_values[1], IMU_values[2], IMU_values[6], IMU_values[7], IMU_values[8]);
      
-   q[0] = q_0; //·µ»Øµ±Ç°Öµ
-   q[1] = q_1;
-   q[2] = q_2;
-   q[3] = q_3;
+   q[0] = kq_0; //·µ»Øµ±Ç°Öµ
+   q[1] = kq_1;
+   q[2] = kq_2;
+   q[3] = kq_3;
 }
 
 // Kalman
@@ -133,16 +133,16 @@ void Kalman_AHRSupdate(float gx, float gy, float gz, float ax, float ay, float a
 //  float halfT;
 
 // ÏÈ°ÑÕâÐ©ÓÃµÃµ½µÄÖµËãºÃ
-  float q0q0 = q_0*q_0;
-  float q0q1 = q_0*q_1;
-  float q0q2 = q_0*q_2;
-  float q0q3 = q_0*q_3;
-  float q1q1 = q_1*q_1;
-  float q1q2 = q_1*q_2;
-  float q1q3 = q_1*q_3;
-  float q2q2 = q_2*q_2;   
-  float q2q3 = q_2*q_3;
-  float q3q3 = q_3*q_3;      
+  float q0q0 = kq_0*kq_0;
+  float q0q1 = kq_0*kq_1;
+  float q0q2 = kq_0*kq_2;
+  float q0q3 = kq_0*kq_3;
+  float q1q1 = kq_1*kq_1;
+  float q1q2 = kq_1*kq_2;
+  float q1q3 = kq_1*kq_3;
+  float q2q2 = kq_2*kq_2;   
+  float q2q3 = kq_2*kq_3;
+  float q3q3 = kq_3*kq_3;      
     //Ê¯¼Ò×¯µØÇø´Å³¡ 
     bx = 0.5500;
     bz = 0.8351; 
@@ -166,11 +166,11 @@ void Kalman_AHRSupdate(float gx, float gy, float gz, float ax, float ay, float a
   
     gx=gx-w1;gy=gy-w2;gz=gz-w3;					 /////////////////		¼õÈ¥ÍÓÂÝÒÇÆ«²î
 	
-    Ha1=(-q_2)*g; Ha2=q_3*g; Ha3=-q_0*g; Ha4=q_1*g;	 
-    Hb1=bx*q_0-bz*q_2;
-    Hb2=bx*q_1+bz*q_3;//
-    Hb3=-bx*q_2-bz*q_0;
-    Hb4=-bx*q_3+bz*q_1;
+    Ha1=(-kq_2)*g; Ha2=kq_3*g; Ha3=-kq_0*g; Ha4=kq_1*g;	 
+    Hb1=bx*kq_0-bz*kq_2;
+    Hb2=bx*kq_1+bz*kq_3;//
+    Hb3=-bx*kq_2-bz*kq_0;
+    Hb4=-bx*kq_3+bz*kq_1;
   
     H[0]= Ha1;H[1]= Ha2;H[2]= Ha3;H[3]= Ha4;
     H[7]= Ha4;H[8]=-Ha3;H[9]= Ha2;H[10]=-Ha1;
@@ -180,16 +180,16 @@ void Kalman_AHRSupdate(float gx, float gy, float gz, float ax, float ay, float a
     H[28]= Hb4;H[29]=-Hb3;H[30]= Hb2;H[31]=-Hb1;
     H[35]=-Hb3;H[36]=-Hb4;H[37]= Hb1;H[38]= Hb2;
     //×´Ì¬¸üÐÂ
-    q_0 = q_0 + (-q_1*gx - q_2*gy - q_3*gz)*halfT;
-    q_1 = q_1 + (q_0*gx + q_2*gz - q_3*gy)*halfT;
-    q_2 = q_2 + (q_0*gy - q_1*gz + q_3*gx)*halfT;
-    q_3 = q_3 + (q_0*gz + q_1*gy - q_2*gx)*halfT;  
+    kq_0 = kq_0 + (-kq_1*gx - kq_2*gy - kq_3*gz)*halfT;
+    kq_1 = kq_1 + (kq_0*gx + kq_2*gz - kq_3*gy)*halfT;
+    kq_2 = kq_2 + (kq_0*gy - kq_1*gz + kq_3*gx)*halfT;
+    kq_3 = kq_3 + (kq_0*gz + kq_1*gy - kq_2*gx)*halfT;  
       // ËÄÔªÊý¹éÒ»
-    norm = invSqrt(q_0*q_0 + q_1*q_1 + q_2*q_2 + q_3*q_3);
-    q_0 = q_0 * norm;
-    q_1 = q_1 * norm;
-    q_2 = q_2 * norm;
-    q_3 = q_3 * norm;
+    norm = invSqrt(kq_0*kq_0 + kq_1*kq_1 + kq_2*kq_2 + kq_3*kq_3);
+    kq_0 = kq_0 * norm;
+    kq_1 = kq_1 * norm;
+    kq_2 = kq_2 * norm;
+    kq_3 = kq_3 * norm;
     //FÕó¸³Öµ
     F[0]=1;F[8]=1;F[16]=1;F[24]=1;F[32]=1;F[40]=1;F[48]=1;
     F[1]=-gx*halfT;F[2]=-gz*halfT;F[3]=-gz*halfT;	F[4]=0; F[5]=0; F[6]=0;
@@ -227,10 +227,10 @@ void Kalman_AHRSupdate(float gx, float gy, float gz, float ax, float ay, float a
     e4=mx-wx;e5=my-wy;e6=mz-wz;
     T[0]=e1;T[1]=e2;T[2]=e3;T[3]=e4;T[4]=e5;T[5]=e6;
     MatrixMultiply(K,7,6,T,6,1,Y );   //Y=K*(Z-Y)	7*1
-    q_0= q_0+Y[0];
-    q_1= q_1+Y[1];
-    q_2= q_2+Y[2];
-    q_3= q_3+Y[3];
+    kq_0= kq_0+Y[0];
+    kq_1= kq_1+Y[1];
+    kq_2= kq_2+Y[2];
+    kq_3= kq_3+Y[3];
     w1= w1+Y[4];
     w2= w2+Y[5];
     w3= w3+Y[6];
@@ -240,9 +240,9 @@ void Kalman_AHRSupdate(float gx, float gy, float gz, float ax, float ay, float a
     MatrixMultiply(O,7,7,P1,7,7,P);
  
     // normalise quaternion
-    norm = invSqrt(q_0*q_0 + q_1*q_1 + q_2*q_2 + q_3*q_3);
-    q_0 = q_0 * norm;
-    q_1 = q_1 * norm;
-    q_2 = q_2 * norm;
-    q_3 = q_3 * norm;
+    norm = invSqrt(kq_0*kq_0 + kq_1*kq_1 + kq_2*kq_2 + kq_3*kq_3);
+    kq_0 = kq_0 * norm;
+    kq_1 = kq_1 * norm;
+    kq_2 = kq_2 * norm;
+    kq_3 = kq_3 * norm;
 }
