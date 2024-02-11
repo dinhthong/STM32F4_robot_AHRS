@@ -68,10 +68,7 @@ float I[49]={1,0,0,0,0,0,0,
 			   0,0,0,0,0,1,0,
 			   0,0,0,0,0,0,1
 			   };
-
 		
-
-
 void Kalman_AHRS_init(void)
 {
 	//Initial_Timer3();
@@ -93,25 +90,24 @@ void Kalman_AHRS_init(void)
     q_3=0;
 }
 
-void KalmanAHRS_getRollPitchYaw(float * angles, float IMU_data[]) {
-  float q[4]; //¡¡ËÄÔªÊý
-  
-  KalmanAHRS_getQ(q, IMU_data); //¸üÐÂÈ«¾ÖËÄÔªÊý
-	#if 0
+volatile float q_kalman_rpy[3];
+void KalmanAHRS_getRollPitchYaw(float *angles, float IMU_data[])
+{
+	float q[4]; // ¡¡ËÄÔªÊý
+	KalmanAHRS_getQ(q, IMU_data); // ¸üÐÂÈ«¾ÖËÄÔªÊý
+#if 1
   angles[2] = -atan2(2 * q[1] * q[2] + 2 * q[0] * q[3], -2 * q[2]*q[2] - 2 * q[3] * q[3] + 1)* 180/M_PI; // yaw 
   angles[1] = -safe_asin(-2 * q[1] * q[3] + 2 * q[0] * q[2])* 180/M_PI; // pitch
   angles[0] = atan2(2 * q[2] * q[3] + 2 * q[0] * q[1], -2 * q[1] * q[1] - 2 * q[2] * q[2] + 1)* 180/M_PI; // roll
 	 // if(angles[2]<2)angles[2]+=360.0f;  //½« -+180¶È  ×ª³É0-360¶È
-	#else
-		IMU_Roll = angles[0] = (atan2(2.0f * (q[0] * q[1] + q[2] * q[3]),
-				      1 - 2.0f * (q[1] * q[1] + q[2] * q[2]))) * 180 / M_PI;
+#else
+	q_kalman_rpy[0] = angles[0] = (atan2(2.0f * (q[0] * q[1] + q[2] * q[3]),
+										 1 - 2.0f * (q[1] * q[1] + q[2] * q[2]))) * 180 / M_PI;
 	// we let safe_asin() handle the singularities near 90/-90 in pitch
-	
-	IMU_Pitch = angles[1] = -safe_asin(2.0f * (q[0] * q[2] - q[3] * q[1])) * 180 / M_PI;
-	IMU_Yaw = angles[2] = -atan2(2 * q[1] * q[2] + 2 * q[0] * q[3], -2 * q[2] * q[2] - 2 * q[3] * q[3] + 1) * 180 / M_PI;
-	
 
-	#endif
+	q_kalman_rpy[1] = angles[1] = -safe_asin(2.0f * (q[0] * q[2] - q[3] * q[1])) * 180 / M_PI;
+	q_kalman_rpy[2] = angles[2] = -atan2(2 * q[1] * q[2] + 2 * q[0] * q[3], -2 * q[2] * q[2] - 2 * q[3] * q[3] + 1) * 180 / M_PI;
+#endif
 }
 
 void KalmanAHRS_getQ(float * q,volatile float IMU_values[9]) {
@@ -123,6 +119,7 @@ void KalmanAHRS_getQ(float * q,volatile float IMU_values[9]) {
    q[2] = q_2;
    q[3] = q_3;
 }
+
 // Kalman
 extern volatile double halfT ,elapsedT; // from "IMU.c"
 
