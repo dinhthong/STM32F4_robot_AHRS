@@ -37,85 +37,86 @@ uint32_t loop_var;
 extern uint32_t lastUpdate;
 double alt_setpoint = 0.0f;
 int8_t calib_error = -1;
-int main(void) {
-    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1); 
-    delay_init(168);
-    delay_ms(200);
-    board_leds_config();
-		/*
-			output PWMs
-		*/
-	  TIM_PWM_Configuration();
-    exti_gpio_config();
-	  usart_printf_config(115200);
-    Initial_System_Timer();  
-    IMU_init();
-		#ifdef MS5611
-	  ms5611_begin();
-    referencePressure = readPressure(0);
-		#endif
+int main(void)
+{
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
+	delay_init(168);
+	delay_ms(200);
+	board_leds_config();
+	/*
+		output PWMs
+	*/
+	TIM_PWM_Configuration();
+	exti_gpio_config();
+	usart_printf_config(115200);
+	Initial_System_Timer();
+	IMU_init();
+#ifdef MS5611
+	ms5611_begin();
+	referencePressure = readPressure(0);
+#endif
 	// for simple_imu
-//	  offset_gx=-72.0f;
-//	  offset_gy = 18.0f; 
-//	  offset_gz = 0.0f;
-		// for Mahony
-    Initialize_Q();	
+	//	  offset_gx=-72.0f;
+	//	  offset_gy = 18.0f;
+	//	  offset_gz = 0.0f;
+	// for Mahony
+	Initialize_Q();
 	// Kalman
-	  Kalman_AHRS_init();
-	
+	Kalman_AHRS_init();
+
 	lastUpdate = TIM5->CNT;
-	  do {
-	  MPU6050_Calculate_MPU6050_Offset(&offset_ax,&offset_ay,&offset_az,&offset_gx,&offset_gy,&offset_gz,1000);
-	  dt = 0.004;
+	do
+	{
+		MPU6050_Calculate_MPU6050_Offset(&offset_ax, &offset_ay, &offset_az, &offset_gx, &offset_gy, &offset_gz, 1000);
+		dt = 0.004;
 		rpy_simple[0] = rpy_simple[1] = rpy_simple[2] = rate_rpy[0] = rate_rpy[1] = rate_rpy[2] = 0.0f;
-		for (j=0; j <= 300; j++){
+		for (j = 0; j <= 300; j++)
+		{
 			// calculate Attitude also
 			IMU_getAttitude(rpy_simple, rpy_ahrs, rate_rpy, rpy_kalman, rpy_new, &cf_acc_z);
-	//		IMU_getAttitude(rpy_simple, rate_rpy);
+			//		IMU_getAttitude(rpy_simple, rate_rpy);
 			delay_ms(4);
-			
 		}
 		calib_error++;
+	} while (fabs(rate_rpy[0]) > 0.1f || fabs(rate_rpy[1]) > 0.1f || fabs(rate_rpy[2]) > 0.11f);
+
+	//	  offset_gyro[0] = offset_gyro[1] = offset_gyro[2] = 0.0f;
+
+	//	  offset_gyro[0] = offset_gx;
+	//	offset_gyro[1] = offset_gy;
+	//	offset_gyro[2] = offset_gz;
+
+	// delay_ms(1000);
+	printf(" Quadcopter Hello World! ");
+#ifdef MS5611
+	// wait and check if Baro values are correct, because of LPF and baro code we need some iteration for data.
+	dt = 0.004;
+	for (uint16_t j = 0; j <= 300; j++)
+	{
+		get_Baro();
+		delay_ms(4);
 	}
-	    while (fabs(rate_rpy[0]) > 0.1f || fabs(rate_rpy[1]) > 0.1f || fabs(rate_rpy[2]) > 0.11f);
-		
-	
-//	  offset_gyro[0] = offset_gyro[1] = offset_gyro[2] = 0.0f;
-
-//	  offset_gyro[0] = offset_gx;
-//	offset_gyro[1] = offset_gy;
-//	offset_gyro[2] = offset_gz;
-
-
-
-   // delay_ms(1000);
-		printf(" Quadcopter Hello World! ");
-		#ifdef MS5611
-	  // wait and check if Baro values are correct, because of LPF and baro code we need some iteration for data. 
-	  dt = 0.004;
-		for (uint16_t j=0; j <= 300; j++){
-			get_Baro();
-			delay_ms(4);
-		}
-    ms5611_altitude_offset = EstAlt;
-		#endif
-    // imu time counter last Update
+	ms5611_altitude_offset = EstAlt;
+#endif
+	// imu time counter last Update
 	//	MPU6050_Calculate_Gyro_Offset(&offset_gx,&offset_gy,&offset_gz,600);
-//		lastUpdate = TIM5->CNT;
-        while(1) {
-            GPIO_ToggleBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
-            IMU_getAttitude(rpy_simple, rpy_ahrs, rate_rpy, rpy_kalman, rpy_new, &cf_acc_z);
-					
-						#ifdef MS5611
-						process_ms5611();
-						#endif
-						// ensure the loop runs at 4ms
-            while ((micros() - loop_var )< 4000) {
-		        };
-			 
-            dt=(micros()-loop_var)*0.000001;
-            loop_var = micros();
-    }
+	//		lastUpdate = TIM5->CNT;
+	while (1)
+	{
+		GPIO_ToggleBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
+		IMU_getAttitude(rpy_simple, rpy_ahrs, rate_rpy, rpy_kalman, rpy_new, &cf_acc_z);
+
+#ifdef MS5611
+		process_ms5611();
+#endif
+		// ensure the loop runs at 4ms
+		while ((micros() - loop_var) < 4000)
+		{
+		};
+
+		dt = (micros() - loop_var) * 0.000001;
+		loop_var = micros();
+	}
 }
 
 static void process_ms5611(void) {
