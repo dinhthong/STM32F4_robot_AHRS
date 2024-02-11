@@ -32,6 +32,7 @@
 "..\build\kalman.o"
 "..\build\matrix.o"
 "..\build\kalman_ahrs.o"
+"..\build\imu_ahrs.o"
 --library_type=microlib --strict --scatter "..\build\output.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

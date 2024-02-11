@@ -2,6 +2,7 @@
 */
 #include "main.h"
 #include "Kalman_AHRS.h"
+#include "IMU_AHRS.h"
 
 static void process_ms5611(void);
 void get_Baro(void);
@@ -119,49 +120,51 @@ int main(void)
 	}
 }
 
-static void process_ms5611(void) {
-				 get_Baro();
-				ms5611_altitude = EstAlt - ms5611_altitude_offset;
+static void process_ms5611(void)
+{
+	get_Baro();
+	ms5611_altitude = EstAlt - ms5611_altitude_offset;
 
-							
-				// altitude PID
-				if ((micros()-vel_lastupdate)> 25000) {
-					
-					dtvel=(micros()-vel_lastupdate)*0.000001;
-				//	z_cnt = 0;
-									// calculate baro velocity based on ms5611 altitude.
-				 baroVel =4000*(EstAlt - lastEstAlt);
-					
+	// altitude PID
+	if ((micros() - vel_lastupdate) > 25000)
+	{
+
+		dtvel = (micros() - vel_lastupdate) * 0.000001;
+		//	z_cnt = 0;
+		// calculate baro velocity based on ms5611 altitude.
+		baroVel = 4000 * (EstAlt - lastEstAlt);
+
 		//			baroVel =106.6f*(EstAlt - lastEstAlt)/dtvel;
-					
-				 fil_baro=fil_baro*0.996 + baroVel*0.004;
-				 lastEstAlt = EstAlt;
-				 if(fil_baro>100) {
-					fil_baro=100;
-				 }
-				if(fil_baro<-100) {
-					fil_baro=-100;   // constrain baro velocity +/- 100
-					}
-					// Using mpu accelemeter -> Integrator - velocity, cm/sec
-					acc_vel += cf_acc_z *0.004788;
-					// finally combine the two measurement
-					// apply Complimentary Filter to keep the calculated velocity based on baro velocity (i.e. near real velocity).
-					// By using CF it's possible to correct the drift of integrated accZ (velocity) without loosing the phase, i.e without delay
-					vel = acc_vel * 0.9975f + fil_baro * 0.0025f;
-				//	vel = acc_vel * 0.9955f + fil_baro * 0.0045f;
-					
-			//		vel = acc_vel * 0.9f + fil_baro * 0.1f;
-					//D
-					
-					vel_lastupdate = micros();
-				}
+
+		fil_baro = fil_baro * 0.996 + baroVel * 0.004;
+		lastEstAlt = EstAlt;
+		if (fil_baro > 100)
+		{
+			fil_baro = 100;
+		}
+		if (fil_baro < -100)
+		{
+			fil_baro = -100; // constrain baro velocity +/- 100
+		}
+		// Using mpu accelemeter -> Integrator - velocity, cm/sec
+		acc_vel += cf_acc_z * 0.004788;
+		// finally combine the two measurement
+		// apply Complimentary Filter to keep the calculated velocity based on baro velocity (i.e. near real velocity).
+		// By using CF it's possible to correct the drift of integrated accZ (velocity) without loosing the phase, i.e without delay
+		vel = acc_vel * 0.9975f + fil_baro * 0.0025f;
+		//	vel = acc_vel * 0.9955f + fil_baro * 0.0045f;
+
+		//		vel = acc_vel * 0.9f + fil_baro * 0.1f;
+		// D
+
+		vel_lastupdate = micros();
+	}
 }
 
-
-void get_Baro(void){
-	  
-		update_baro(&ms5611_temperature, &realPressure, &absoluteAltitude);
-    fil_lpf_alt = LPF(absoluteAltitude, fil_lpf_alt, cut_off, dt);
-    fil_comple_alt = fil_comple_alt*0.977f + fil_lpf_alt*0.023f;
-	  EstAlt = fil_comple_alt*10;
+void get_Baro(void)
+{
+	update_baro(&ms5611_temperature, &realPressure, &absoluteAltitude);
+	fil_lpf_alt = LPF(absoluteAltitude, fil_lpf_alt, cut_off, dt);
+	fil_comple_alt = fil_comple_alt * 0.977f + fil_lpf_alt * 0.023f;
+	EstAlt = fil_comple_alt * 10;
 }

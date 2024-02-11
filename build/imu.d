@@ -51,3 +51,4 @@
 ..\build\imu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\build\imu.o: ..\HardWareDriver\Service\Matrix.h
 ..\build\imu.o: ..\HardWareDriver\IMU\Kalman_AHRS.h
+..\build\imu.o: ..\HardWareDriver\IMU\IMU_AHRS.h

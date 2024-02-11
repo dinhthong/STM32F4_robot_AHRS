@@ -3,9 +3,9 @@
 <title>Static Call Graph - [..\build\output.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\build\output.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Sun Feb 11 22:54:05 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Sun Feb 11 23:09:17 2024
 <BR><P>
-<H3>Maximum Stack Usage =        512 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        504 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; IMU_getAttitude &rArr; AHRSupdate &rArr; __hardfp_atan2 &rArr; atan &rArr; __hardfp_atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 <P>
@@ -152,7 +152,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[5d]"></a>main</STRONG> (Thumb, 356 bytes, Stack size 32 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 512<LI>Call Chain = main &rArr; IMU_getAttitude &rArr; AHRSupdate &rArr; __hardfp_atan2 &rArr; atan &rArr; __hardfp_atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 504<LI>Call Chain = main &rArr; IMU_getAttitude &rArr; AHRSupdate &rArr; __hardfp_atan2 &rArr; atan &rArr; __hardfp_atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_printf_config
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exti_gpio_config
@@ -626,7 +626,7 @@ Global Symbols
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;board_leds_config
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_PWM_Configuration
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_init
-<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Init
+<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Init
 </UL>
 
 <P><STRONG><a name="[141]"></a>GPIO_StructInit</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(.text), UNUSED)
@@ -635,7 +635,7 @@ Global Symbols
 
 <P><STRONG><a name="[7c]"></a>GPIO_ReadInputDataBit</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI9_5_IRQHandler
-<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_is_DRY
+<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_is_DRY
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HMC5883_IS_newdata
 </UL>
 
@@ -744,7 +744,7 @@ Global Symbols
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;board_leds_config
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_PWM_Configuration
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_init
-<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Init
+<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Init
 </UL>
 
 <P><STRONG><a name="[168]"></a>RCC_AHB2PeriphClockCmd</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(.text), UNUSED)
@@ -1099,14 +1099,14 @@ Global Symbols
 
 <P><STRONG><a name="[1bf]"></a>USART_OneBitMethodCmd</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f4xx_usart.o(.text), UNUSED)
 
-<P><STRONG><a name="[104]"></a>USART_SendData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f4xx_usart.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ttywrch
+<P><STRONG><a name="[fd]"></a>USART_SendData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f4xx_usart.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ttywrch
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputc
 </UL>
 
 <P><STRONG><a name="[7b]"></a>USART_ReceiveData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f4xx_usart.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_IRQHandler
-<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fgetc
+<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fgetc
 </UL>
 
 <P><STRONG><a name="[1c0]"></a>USART_SetAddress</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f4xx_usart.o(.text), UNUSED)
@@ -1141,9 +1141,9 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_printf_config
 </UL>
 
-<P><STRONG><a name="[103]"></a>USART_GetFlagStatus</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f4xx_usart.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ttywrch
-<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fgetc
+<P><STRONG><a name="[fc]"></a>USART_GetFlagStatus</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f4xx_usart.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ttywrch
+<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fgetc
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputc
 </UL>
 
@@ -1166,14 +1166,14 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[b6]"></a>delay_us</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, delay.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Read_Byte
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Send_Byte
-<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_NAck
-<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Ack
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Wait_Ack
-<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Stop
-<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Start
-<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_InitGyro_Offset
+<BR><BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Read_Byte
+<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Send_Byte
+<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_NAck
+<LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Ack
+<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Wait_Ack
+<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Stop
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Start
+<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_InitGyro_Offset
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_initialize
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HMC58X3_setMode
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HMC58X3_FIFO_init
@@ -1191,7 +1191,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_Calculate_MPU6050_Offset
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_init
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ms5611_begin
+<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ms5611_begin
 </UL>
 
 <P><STRONG><a name="[b1]"></a>HMC5883_IS_newdata</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, hmc5883l.o(.text), UNUSED)
@@ -1292,14 +1292,14 @@ Global Symbols
 
 <P><STRONG><a name="[1d0]"></a>HMC5883L_Start_Calib</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, hmc5883l.o(.text), UNUSED)
 
-<P><STRONG><a name="[c5]"></a>invSqrt</STRONG> (Thumb, 68 bytes, Stack size 12 bytes, imu.o(.text))
+<P><STRONG><a name="[105]"></a>invSqrt</STRONG> (Thumb, 68 bytes, Stack size 12 bytes, imu.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = invSqrt
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Initialize_Q
-<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_AHRSupdate
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FreeIMU_AHRSupdate
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
-<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
+<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FreeIMU_AHRSupdate
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_AHRSupdate
+<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
 </UL>
 
 <P><STRONG><a name="[6b]"></a>IMU_init</STRONG> (Thumb, 102 bytes, Stack size 32 bytes, imu.o(.text))
@@ -1324,91 +1324,13 @@ Global Symbols
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getAttitude
 </UL>
 
-<P><STRONG><a name="[c4]"></a>AHRSupdate</STRONG> (Thumb, 7340 bytes, Stack size 208 bytes, imu.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 432<LI>Call Chain = AHRSupdate &rArr; __hardfp_atan2 &rArr; atan &rArr; __hardfp_atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
-</UL>
-<BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invSqrt
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sqrt
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
-</UL>
-<BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getAttitude
-</UL>
-
-<P><STRONG><a name="[cc]"></a>safe_asin</STRONG> (Thumb, 86 bytes, Stack size 8 bytes, imu.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = safe_asin &rArr; __hardfp_asin &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
-</UL>
-<BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
-</UL>
-<BR>[Called By]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KalmanAHRS_getRollPitchYaw
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getRollPitchYaw
-</UL>
-
-<P><STRONG><a name="[cd]"></a>FreeIMU_AHRSupdate</STRONG> (Thumb, 1202 bytes, Stack size 88 bytes, imu.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = FreeIMU_AHRSupdate &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
-</UL>
-<BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invSqrt
-</UL>
-<BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getQ
-</UL>
-
-<P><STRONG><a name="[ce]"></a>IMU_AHRSupdate</STRONG> (Thumb, 1712 bytes, Stack size 144 bytes, imu.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = IMU_AHRSupdate &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
-</UL>
-<BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invSqrt
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sqrt
-</UL>
-<BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getQ
-</UL>
-
-<P><STRONG><a name="[cf]"></a>IMU_getQ</STRONG> (Thumb, 174 bytes, Stack size 24 bytes, imu.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = IMU_getQ &rArr; IMU_AHRSupdate &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
-</UL>
-<BR>[Calls]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_AHRSupdate
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FreeIMU_AHRSupdate
-</UL>
-<BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getRollPitchYaw
-</UL>
-
-<P><STRONG><a name="[d0]"></a>IMU_getRollPitchYaw</STRONG> (Thumb, 350 bytes, Stack size 48 bytes, imu.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 304<LI>Call Chain = IMU_getRollPitchYaw &rArr; IMU_getQ &rArr; IMU_AHRSupdate &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
-</UL>
-<BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getQ
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;safe_asin
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
-</UL>
-<BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getAttitude
-</UL>
-
 <P><STRONG><a name="[77]"></a>LPF</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, imu.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_Baro
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
 </UL>
 
-<P><STRONG><a name="[d1]"></a>simple_imu</STRONG> (Thumb, 1162 bytes, Stack size 88 bytes, imu.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 328<LI>Call Chain = simple_imu &rArr; __hardfp_sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+<P><STRONG><a name="[c4]"></a>simple_imu</STRONG> (Thumb, 1152 bytes, Stack size 80 bytes, imu.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 320<LI>Call Chain = simple_imu &rArr; __hardfp_sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
@@ -1416,124 +1338,117 @@ Global Symbols
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LPF
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_getAngle_roll
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_getAngle_pitch
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_getAngle_roll
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_getAngle_pitch
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sqrt
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sin
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sin
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getAttitude
 </UL>
 
-<P><STRONG><a name="[6f]"></a>IMU_getAttitude</STRONG> (Thumb, 388 bytes, Stack size 48 bytes, imu.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 480<LI>Call Chain = IMU_getAttitude &rArr; AHRSupdate &rArr; __hardfp_atan2 &rArr; atan &rArr; __hardfp_atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+<P><STRONG><a name="[6f]"></a>IMU_getAttitude</STRONG> (Thumb, 384 bytes, Stack size 40 bytes, imu.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 472<LI>Call Chain = IMU_getAttitude &rArr; AHRSupdate &rArr; __hardfp_atan2 &rArr; atan &rArr; __hardfp_atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KalmanAHRS_getRollPitchYaw
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getRollPitchYaw
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KalmanAHRS_getRollPitchYaw
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getRollPitchYaw
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getValues
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[6c]"></a>Initialize_Q</STRONG> (Thumb, 1820 bytes, Stack size 128 bytes, imu.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 368<LI>Call Chain = Initialize_Q &rArr; __hardfp_sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+<P><STRONG><a name="[cf]"></a>safe_asin</STRONG> (Thumb, 86 bytes, Stack size 8 bytes, imu.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = safe_asin &rArr; __hardfp_asin &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getValues
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invSqrt
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sin
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cos
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KalmanAHRS_getRollPitchYaw
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getRollPitchYaw
 </UL>
 
-<P><STRONG><a name="[e3]"></a>MPU6050_getAvg</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, mpu6050.o(.text))
+<P><STRONG><a name="[db]"></a>MPU6050_getAvg</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, mpu6050.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = MPU6050_getAvg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_newValues
+<BR>[Called By]<UL><LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_newValues
 </UL>
 
-<P><STRONG><a name="[d8]"></a>MPU6050_setClockSource</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, mpu6050.o(.text))
+<P><STRONG><a name="[d0]"></a>MPU6050_setClockSource</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, mpu6050.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = MPU6050_setClockSource &rArr; IICwriteBits &rArr; IICreadByte &rArr; I2C_ReadOneByte &rArr; IIC_Read_Byte &rArr; IIC_NAck
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBits
+<BR>[Calls]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBits
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_initialize
 </UL>
 
-<P><STRONG><a name="[da]"></a>MPU6050_setFullScaleGyroRange</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, mpu6050.o(.text))
+<P><STRONG><a name="[d2]"></a>MPU6050_setFullScaleGyroRange</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, mpu6050.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = MPU6050_setFullScaleGyroRange &rArr; IICwriteBits &rArr; IICreadByte &rArr; I2C_ReadOneByte &rArr; IIC_Read_Byte &rArr; IIC_NAck
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBits
+<BR>[Calls]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBits
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_initialize
 </UL>
 
-<P><STRONG><a name="[db]"></a>MPU6050_setFullScaleAccelRange</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, mpu6050.o(.text))
+<P><STRONG><a name="[d3]"></a>MPU6050_setFullScaleAccelRange</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, mpu6050.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = MPU6050_setFullScaleAccelRange &rArr; IICwriteBits &rArr; IICreadByte &rArr; I2C_ReadOneByte &rArr; IIC_Read_Byte &rArr; IIC_NAck
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBits
+<BR>[Calls]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBits
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_initialize
 </UL>
 
-<P><STRONG><a name="[dc]"></a>MPU6050_setSleepEnabled</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, mpu6050.o(.text))
+<P><STRONG><a name="[d4]"></a>MPU6050_setSleepEnabled</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, mpu6050.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = MPU6050_setSleepEnabled &rArr; IICwriteBit &rArr; IICreadByte &rArr; I2C_ReadOneByte &rArr; IIC_Read_Byte &rArr; IIC_NAck
 </UL>
-<BR>[Calls]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBit
+<BR>[Calls]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_initialize
 </UL>
 
-<P><STRONG><a name="[de]"></a>MPU6050_getDeviceID</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, mpu6050.o(.text), UNUSED)
+<P><STRONG><a name="[d6]"></a>MPU6050_getDeviceID</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, mpu6050.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICreadBytes
 </UL>
-<BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_testConnection
+<BR>[Called By]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_testConnection
 </UL>
 
-<P><STRONG><a name="[df]"></a>MPU6050_testConnection</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, mpu6050.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_getDeviceID
+<P><STRONG><a name="[d7]"></a>MPU6050_testConnection</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, mpu6050.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_getDeviceID
 </UL>
 
-<P><STRONG><a name="[e0]"></a>MPU6050_setI2CMasterModeEnabled</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, mpu6050.o(.text))
+<P><STRONG><a name="[d8]"></a>MPU6050_setI2CMasterModeEnabled</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, mpu6050.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = MPU6050_setI2CMasterModeEnabled &rArr; IICwriteBit &rArr; IICreadByte &rArr; I2C_ReadOneByte &rArr; IIC_Read_Byte &rArr; IIC_NAck
 </UL>
-<BR>[Calls]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBit
+<BR>[Calls]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_initialize
 </UL>
 
-<P><STRONG><a name="[e1]"></a>MPU6050_setI2CBypassEnabled</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, mpu6050.o(.text))
+<P><STRONG><a name="[d9]"></a>MPU6050_setI2CBypassEnabled</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, mpu6050.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = MPU6050_setI2CBypassEnabled &rArr; IICwriteBit &rArr; IICreadByte &rArr; I2C_ReadOneByte &rArr; IIC_Read_Byte &rArr; IIC_NAck
 </UL>
-<BR>[Calls]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBit
+<BR>[Calls]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_initialize
 </UL>
 
-<P><STRONG><a name="[e2]"></a>MPU6050_newValues</STRONG> (Thumb, 132 bytes, Stack size 20 bytes, mpu6050.o(.text))
+<P><STRONG><a name="[da]"></a>MPU6050_newValues</STRONG> (Thumb, 132 bytes, Stack size 20 bytes, mpu6050.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = MPU6050_newValues &rArr; MPU6050_getAvg
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_getAvg
+<BR>[Calls]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_getAvg
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_getMotion6
 </UL>
 
-<P><STRONG><a name="[e4]"></a>MPU6050_is_DRY</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, mpu6050.o(.text))
+<P><STRONG><a name="[dc]"></a>MPU6050_is_DRY</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, mpu6050.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = MPU6050_is_DRY
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
@@ -1544,12 +1459,12 @@ Global Symbols
 <P><STRONG><a name="[c3]"></a>MPU6050_getMotion6</STRONG> (Thumb, 164 bytes, Stack size 48 bytes, mpu6050.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = MPU6050_getMotion6 &rArr; IICreadBytes &rArr; IIC_Read_Byte &rArr; IIC_NAck
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_is_DRY
-<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_newValues
+<BR>[Calls]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_is_DRY
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_newValues
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICreadBytes
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_Calculate_MPU6050_Offset
-<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_InitGyro_Offset
+<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_InitGyro_Offset
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_initialize
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getValues
 </UL>
@@ -1557,26 +1472,26 @@ Global Symbols
 <P><STRONG><a name="[c1]"></a>MPU6050_initialize</STRONG> (Thumb, 160 bytes, Stack size 40 bytes, mpu6050.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = MPU6050_initialize &rArr; MPU6050_getMotion6 &rArr; IICreadBytes &rArr; IIC_Read_Byte &rArr; IIC_NAck
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBits
-<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBit
-<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setI2CBypassEnabled
-<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setI2CMasterModeEnabled
-<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setSleepEnabled
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setFullScaleAccelRange
-<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setFullScaleGyroRange
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setClockSource
+<BR>[Calls]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBits
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBit
+<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setI2CBypassEnabled
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setI2CMasterModeEnabled
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setSleepEnabled
+<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setFullScaleAccelRange
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setFullScaleGyroRange
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setClockSource
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_getMotion6
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_init
 </UL>
 
-<P><STRONG><a name="[e6]"></a>Write_Gyro_Offset</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, mpu6050.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_InitGyro_Offset
+<P><STRONG><a name="[de]"></a>Write_Gyro_Offset</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, mpu6050.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_InitGyro_Offset
 </UL>
 
-<P><STRONG><a name="[e5]"></a>MPU6050_InitGyro_Offset</STRONG> (Thumb, 148 bytes, Stack size 56 bytes, mpu6050.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Write_Gyro_Offset
+<P><STRONG><a name="[dd]"></a>MPU6050_InitGyro_Offset</STRONG> (Thumb, 148 bytes, Stack size 56 bytes, mpu6050.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Write_Gyro_Offset
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_getMotion6
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
@@ -1590,74 +1505,74 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[e7]"></a>IIC_Init</STRONG> (Thumb, 46 bytes, Stack size 16 bytes, ioi2c.o(.text), UNUSED)
+<P><STRONG><a name="[df]"></a>IIC_Init</STRONG> (Thumb, 46 bytes, Stack size 16 bytes, ioi2c.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 </UL>
 
-<P><STRONG><a name="[e8]"></a>IIC_Start</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, ioi2c.o(.text))
+<P><STRONG><a name="[e0]"></a>IIC_Start</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, ioi2c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = IIC_Start
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBytes
+<BR>[Called By]<UL><LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBytes
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICreadBytes
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_ReadOneByte
 </UL>
 
-<P><STRONG><a name="[e9]"></a>IIC_Stop</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, ioi2c.o(.text))
+<P><STRONG><a name="[e1]"></a>IIC_Stop</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, ioi2c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = IIC_Stop
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBytes
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Wait_Ack
+<BR>[Called By]<UL><LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBytes
+<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Wait_Ack
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICreadBytes
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_ReadOneByte
 </UL>
 
-<P><STRONG><a name="[ea]"></a>IIC_Wait_Ack</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, ioi2c.o(.text))
+<P><STRONG><a name="[e2]"></a>IIC_Wait_Ack</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, ioi2c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = IIC_Wait_Ack &rArr; IIC_Stop
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Stop
+<BR>[Calls]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Stop
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBytes
+<BR>[Called By]<UL><LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBytes
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICreadBytes
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_ReadOneByte
 </UL>
 
-<P><STRONG><a name="[eb]"></a>IIC_Ack</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, ioi2c.o(.text))
+<P><STRONG><a name="[e3]"></a>IIC_Ack</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, ioi2c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = IIC_Ack
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Read_Byte
+<BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Read_Byte
 </UL>
 
-<P><STRONG><a name="[ec]"></a>IIC_NAck</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, ioi2c.o(.text))
+<P><STRONG><a name="[e4]"></a>IIC_NAck</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, ioi2c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = IIC_NAck
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Read_Byte
+<BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Read_Byte
 </UL>
 
-<P><STRONG><a name="[ed]"></a>IIC_Send_Byte</STRONG> (Thumb, 86 bytes, Stack size 24 bytes, ioi2c.o(.text))
+<P><STRONG><a name="[e5]"></a>IIC_Send_Byte</STRONG> (Thumb, 86 bytes, Stack size 24 bytes, ioi2c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = IIC_Send_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBytes
+<BR>[Called By]<UL><LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBytes
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICreadBytes
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_ReadOneByte
 </UL>
 
-<P><STRONG><a name="[ee]"></a>IIC_Read_Byte</STRONG> (Thumb, 96 bytes, Stack size 32 bytes, ioi2c.o(.text))
+<P><STRONG><a name="[e6]"></a>IIC_Read_Byte</STRONG> (Thumb, 96 bytes, Stack size 32 bytes, ioi2c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = IIC_Read_Byte &rArr; IIC_NAck
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_NAck
-<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Ack
+<BR>[Calls]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_NAck
+<LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Ack
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICreadBytes
@@ -1667,160 +1582,160 @@ Global Symbols
 <P><STRONG><a name="[bf]"></a>I2C_ReadOneByte</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, ioi2c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = I2C_ReadOneByte &rArr; IIC_Read_Byte &rArr; IIC_NAck
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Read_Byte
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Send_Byte
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Wait_Ack
-<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Stop
-<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Start
+<BR>[Calls]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Read_Byte
+<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Send_Byte
+<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Wait_Ack
+<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Stop
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Start
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICreadByte
+<BR>[Called By]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICreadByte
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HMC58X3_getID
 </UL>
 
 <P><STRONG><a name="[b3]"></a>IICreadBytes</STRONG> (Thumb, 90 bytes, Stack size 24 bytes, ioi2c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = IICreadBytes &rArr; IIC_Read_Byte &rArr; IIC_NAck
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Read_Byte
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Send_Byte
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Wait_Ack
-<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Stop
-<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Start
+<BR>[Calls]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Read_Byte
+<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Send_Byte
+<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Wait_Ack
+<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Stop
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Start
 </UL>
-<BR>[Called By]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRegister24
-<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRegister16
-<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_getDeviceID
+<BR>[Called By]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRegister24
+<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRegister16
+<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_getDeviceID
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_getMotion6
 <LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HMC58X3_getRaw
 </UL>
 
-<P><STRONG><a name="[ef]"></a>IICwriteBytes</STRONG> (Thumb, 68 bytes, Stack size 24 bytes, ioi2c.o(.text))
+<P><STRONG><a name="[e7]"></a>IICwriteBytes</STRONG> (Thumb, 68 bytes, Stack size 24 bytes, ioi2c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = IICwriteBytes &rArr; IIC_Send_Byte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Send_Byte
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Wait_Ack
-<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Stop
-<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Start
+<BR>[Calls]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Send_Byte
+<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Wait_Ack
+<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Stop
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Start
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteByte
 </UL>
 
-<P><STRONG><a name="[f0]"></a>IICreadByte</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, ioi2c.o(.text))
+<P><STRONG><a name="[e8]"></a>IICreadByte</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, ioi2c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = IICreadByte &rArr; I2C_ReadOneByte &rArr; IIC_Read_Byte &rArr; IIC_NAck
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_ReadOneByte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBits
-<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBit
+<BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBits
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBit
 </UL>
 
 <P><STRONG><a name="[b8]"></a>IICwriteByte</STRONG> (Thumb, 12 bytes, Stack size 16 bytes, ioi2c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = IICwriteByte &rArr; IICwriteBytes &rArr; IIC_Send_Byte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBytes
+<BR>[Calls]<UL><LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBytes
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ms5611WriteByte
-<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBits
-<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBit
+<BR>[Called By]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ms5611WriteByte
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBits
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteBit
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HMC58X3_writeReg
 </UL>
 
-<P><STRONG><a name="[d9]"></a>IICwriteBits</STRONG> (Thumb, 84 bytes, Stack size 32 bytes, ioi2c.o(.text))
+<P><STRONG><a name="[d1]"></a>IICwriteBits</STRONG> (Thumb, 84 bytes, Stack size 32 bytes, ioi2c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = IICwriteBits &rArr; IICreadByte &rArr; I2C_ReadOneByte &rArr; IIC_Read_Byte &rArr; IIC_NAck
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICreadByte
+<BR>[Calls]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICreadByte
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteByte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setFullScaleAccelRange
-<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setFullScaleGyroRange
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setClockSource
+<BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setFullScaleAccelRange
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setFullScaleGyroRange
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setClockSource
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_initialize
 </UL>
 
-<P><STRONG><a name="[dd]"></a>IICwriteBit</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, ioi2c.o(.text))
+<P><STRONG><a name="[d5]"></a>IICwriteBit</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, ioi2c.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = IICwriteBit &rArr; IICreadByte &rArr; I2C_ReadOneByte &rArr; IIC_Read_Byte &rArr; IIC_NAck
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICreadByte
+<BR>[Calls]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICreadByte
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteByte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setI2CBypassEnabled
-<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setI2CMasterModeEnabled
-<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setSleepEnabled
+<BR>[Called By]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setI2CBypassEnabled
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setI2CMasterModeEnabled
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_setSleepEnabled
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6050_initialize
 </UL>
 
-<P><STRONG><a name="[f1]"></a>readRegister16</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, ms5611.o(.text), UNUSED)
+<P><STRONG><a name="[e9]"></a>readRegister16</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, ms5611.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICreadBytes
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readPROM
+<BR>[Called By]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readPROM
 </UL>
 
-<P><STRONG><a name="[f2]"></a>readPROM</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, ms5611.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRegister16
+<P><STRONG><a name="[ea]"></a>readPROM</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, ms5611.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRegister16
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ms5611_begin
-</UL>
-
-<P><STRONG><a name="[f6]"></a>setOversampling</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, ms5611.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ms5611_begin
+<BR>[Called By]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ms5611_begin
 </UL>
 
-<P><STRONG><a name="[f3]"></a>ms5611WriteByte</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, ms5611.o(.text), UNUSED)
+<P><STRONG><a name="[ee]"></a>setOversampling</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, ms5611.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ms5611_begin
+</UL>
+
+<P><STRONG><a name="[eb]"></a>ms5611WriteByte</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, ms5611.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICwriteByte
 </UL>
 <BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_baro
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ms5611_begin
-<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reset
+<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ms5611_begin
+<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reset
 </UL>
 
-<P><STRONG><a name="[f4]"></a>reset</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, ms5611.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ms5611WriteByte
+<P><STRONG><a name="[ec]"></a>reset</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, ms5611.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ms5611WriteByte
 </UL>
 
-<P><STRONG><a name="[f5]"></a>ms5611_begin</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, ms5611.o(.text), UNUSED)
+<P><STRONG><a name="[ed]"></a>ms5611_begin</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, ms5611.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
-<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ms5611WriteByte
-<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setOversampling
-<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readPROM
+<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ms5611WriteByte
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setOversampling
+<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readPROM
 </UL>
 
-<P><STRONG><a name="[f7]"></a>getAltitude</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, ms5611.o(.text), UNUSED)
+<P><STRONG><a name="[ef]"></a>getAltitude</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, ms5611.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
+<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
 </UL>
 <BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_baro
 </UL>
 
-<P><STRONG><a name="[f9]"></a>readPressure</STRONG> (Thumb, 324 bytes, Stack size 40 bytes, ms5611.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ldivmod
+<P><STRONG><a name="[f2]"></a>readPressure</STRONG> (Thumb, 324 bytes, Stack size 40 bytes, ms5611.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ldivmod
 </UL>
 <BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_baro
 </UL>
 
-<P><STRONG><a name="[fb]"></a>readRegister24</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, ms5611.o(.text), UNUSED)
+<P><STRONG><a name="[f4]"></a>readRegister24</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, ms5611.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IICreadBytes
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRawTemperature
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRawPressure
+<BR>[Called By]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRawTemperature
+<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRawPressure
 </UL>
 
-<P><STRONG><a name="[fc]"></a>readRawPressure</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, ms5611.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRegister24
+<P><STRONG><a name="[f5]"></a>readRawPressure</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, ms5611.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRegister24
 </UL>
 <BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_baro
 </UL>
 
-<P><STRONG><a name="[fd]"></a>readTemperature</STRONG> (Thumb, 106 bytes, Stack size 24 bytes, ms5611.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ldivmod
+<P><STRONG><a name="[f6]"></a>readTemperature</STRONG> (Thumb, 106 bytes, Stack size 24 bytes, ms5611.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ldivmod
 </UL>
 <BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_baro
 </UL>
 
-<P><STRONG><a name="[ff]"></a>readRawTemperature</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, ms5611.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRegister24
+<P><STRONG><a name="[f8]"></a>readRawTemperature</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, ms5611.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRegister24
 </UL>
 <BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_baro
 </UL>
@@ -1829,15 +1744,15 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
-<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
-<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdrcmple
-<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRawTemperature
-<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readTemperature
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRawPressure
-<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readPressure
-<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getAltitude
-<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ms5611WriteByte
+<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
+<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdrcmple
+<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRawTemperature
+<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readTemperature
+<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readRawPressure
+<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readPressure
+<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getAltitude
+<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ms5611WriteByte
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
 </UL>
 <BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_Baro
@@ -1845,98 +1760,98 @@ Global Symbols
 
 <P><STRONG><a name="[1d1]"></a>getOversampling</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, ms5611.o(.text), UNUSED)
 
-<P><STRONG><a name="[102]"></a>getSeaLevel</STRONG> (Thumb, 146 bytes, Stack size 16 bytes, ms5611.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
+<P><STRONG><a name="[fb]"></a>getSeaLevel</STRONG> (Thumb, 146 bytes, Stack size 16 bytes, ms5611.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
 </UL>
 
 <P><STRONG><a name="[60]"></a>fputc</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, my_printf.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = fputc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
-<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
+<BR>[Calls]<UL><LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> printfb.o(i.__0printf$bare)
 </UL>
-<P><STRONG><a name="[105]"></a>fgetc</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, my_printf.o(.text), UNUSED)
+<P><STRONG><a name="[fe]"></a>fgetc</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, my_printf.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ReceiveData
-<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
 </UL>
 
 <P><STRONG><a name="[1d2]"></a>ferror</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, my_printf.o(.text), UNUSED)
 
-<P><STRONG><a name="[106]"></a>_ttywrch</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, my_printf.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
-<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
+<P><STRONG><a name="[ff]"></a>_ttywrch</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, my_printf.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
 </UL>
 
-<P><STRONG><a name="[107]"></a>_sys_exit</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, my_printf.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sys_exit
+<P><STRONG><a name="[100]"></a>_sys_exit</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, my_printf.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sys_exit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sys_exit
-</UL>
-
-<P><STRONG><a name="[d3]"></a>Kalman_getAngle_roll</STRONG> (Thumb, 190 bytes, Stack size 0 bytes, kalman.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
+<BR>[Called By]<UL><LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sys_exit
 </UL>
 
-<P><STRONG><a name="[d4]"></a>Kalman_getAngle_pitch</STRONG> (Thumb, 192 bytes, Stack size 0 bytes, kalman.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
+<P><STRONG><a name="[ca]"></a>Kalman_getAngle_roll</STRONG> (Thumb, 190 bytes, Stack size 0 bytes, kalman.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
 </UL>
 
-<P><STRONG><a name="[10e]"></a>MatrixAdd</STRONG> (Thumb, 58 bytes, Stack size 20 bytes, matrix.o(.text))
+<P><STRONG><a name="[cb]"></a>Kalman_getAngle_pitch</STRONG> (Thumb, 192 bytes, Stack size 0 bytes, kalman.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
+</UL>
+
+<P><STRONG><a name="[108]"></a>MatrixAdd</STRONG> (Thumb, 58 bytes, Stack size 20 bytes, matrix.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = MatrixAdd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
+<BR>[Called By]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
 </UL>
 
-<P><STRONG><a name="[111]"></a>MatrixSub</STRONG> (Thumb, 58 bytes, Stack size 20 bytes, matrix.o(.text))
+<P><STRONG><a name="[10b]"></a>MatrixSub</STRONG> (Thumb, 58 bytes, Stack size 20 bytes, matrix.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = MatrixSub
 </UL>
-<BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
+<BR>[Called By]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
 </UL>
 
-<P><STRONG><a name="[10c]"></a>MatrixMultiply</STRONG> (Thumb, 92 bytes, Stack size 32 bytes, matrix.o(.text))
+<P><STRONG><a name="[106]"></a>MatrixMultiply</STRONG> (Thumb, 92 bytes, Stack size 32 bytes, matrix.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = MatrixMultiply
 </UL>
-<BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
+<BR>[Called By]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
 </UL>
 
-<P><STRONG><a name="[10d]"></a>MatrixTranspose</STRONG> (Thumb, 48 bytes, Stack size 20 bytes, matrix.o(.text))
+<P><STRONG><a name="[107]"></a>MatrixTranspose</STRONG> (Thumb, 48 bytes, Stack size 20 bytes, matrix.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = MatrixTranspose
 </UL>
-<BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
+<BR>[Called By]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
 </UL>
 
 <P><STRONG><a name="[1d3]"></a>MatrixProduct</STRONG> (Thumb, 124 bytes, Stack size 32 bytes, matrix.o(.text), UNUSED)
 
 <P><STRONG><a name="[1d4]"></a>MatrixE</STRONG> (Thumb, 58 bytes, Stack size 12 bytes, matrix.o(.text), UNUSED)
 
-<P><STRONG><a name="[108]"></a>MatrixDet2</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, matrix.o(.text), UNUSED)
+<P><STRONG><a name="[101]"></a>MatrixDet2</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, matrix.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 </UL>
-<BR>[Called By]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixInverse2
+<BR>[Called By]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixInverse2
 </UL>
 
-<P><STRONG><a name="[109]"></a>MatrixInverse2</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, matrix.o(.text), UNUSED)
+<P><STRONG><a name="[102]"></a>MatrixInverse2</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, matrix.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
-<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixDet2
+<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixDet2
 </UL>
 
-<P><STRONG><a name="[110]"></a>MatrixInverse</STRONG> (Thumb, 530 bytes, Stack size 116 bytes, matrix.o(.text))
+<P><STRONG><a name="[10a]"></a>MatrixInverse</STRONG> (Thumb, 530 bytes, Stack size 116 bytes, matrix.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 116<LI>Call Chain = MatrixInverse
 </UL>
-<BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
+<BR>[Called By]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
 </UL>
 
-<P><STRONG><a name="[10f]"></a>UD</STRONG> (Thumb, 320 bytes, Stack size 20 bytes, matrix.o(.text))
+<P><STRONG><a name="[109]"></a>UD</STRONG> (Thumb, 320 bytes, Stack size 20 bytes, matrix.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = UD
 </UL>
-<BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
+<BR>[Called By]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
 </UL>
 
-<P><STRONG><a name="[10a]"></a>Norm</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, matrix.o(.text), UNUSED)
+<P><STRONG><a name="[103]"></a>Norm</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, matrix.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sqrt
@@ -1946,53 +1861,138 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[10b]"></a>Kalman_AHRSupdate</STRONG> (Thumb, 2394 bytes, Stack size 152 bytes, kalman_ahrs.o(.text))
+<P><STRONG><a name="[104]"></a>Kalman_AHRSupdate</STRONG> (Thumb, 2394 bytes, Stack size 152 bytes, kalman_ahrs.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 268<LI>Call Chain = Kalman_AHRSupdate &rArr; MatrixInverse
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
+<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UD
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixInverse
+<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixTranspose
+<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixMultiply
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixSub
+<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixAdd
+<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invSqrt
-<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UD
-<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixInverse
-<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixTranspose
-<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixMultiply
-<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixSub
-<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixAdd
+<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invSqrt
 </UL>
-<BR>[Called By]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KalmanAHRS_getQ
+<BR>[Called By]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KalmanAHRS_getQ
 </UL>
 
-<P><STRONG><a name="[112]"></a>KalmanAHRS_getQ</STRONG> (Thumb, 112 bytes, Stack size 8 bytes, kalman_ahrs.o(.text))
+<P><STRONG><a name="[10c]"></a>KalmanAHRS_getQ</STRONG> (Thumb, 112 bytes, Stack size 8 bytes, kalman_ahrs.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 276<LI>Call Chain = KalmanAHRS_getQ &rArr; Kalman_AHRSupdate &rArr; MatrixInverse
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
+<BR>[Calls]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KalmanAHRS_getRollPitchYaw
+<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KalmanAHRS_getRollPitchYaw
 </UL>
 
-<P><STRONG><a name="[d5]"></a>KalmanAHRS_getRollPitchYaw</STRONG> (Thumb, 424 bytes, Stack size 56 bytes, kalman_ahrs.o(.text))
+<P><STRONG><a name="[cd]"></a>KalmanAHRS_getRollPitchYaw</STRONG> (Thumb, 394 bytes, Stack size 56 bytes, kalman_ahrs.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 332<LI>Call Chain = KalmanAHRS_getRollPitchYaw &rArr; KalmanAHRS_getQ &rArr; Kalman_AHRSupdate &rArr; MatrixInverse
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;safe_asin
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
-<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KalmanAHRS_getQ
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;safe_asin
+<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
+<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KalmanAHRS_getQ
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getAttitude
 </UL>
 
-<P><STRONG><a name="[fa]"></a>__aeabi_ldivmod</STRONG> (Thumb, 98 bytes, Stack size 24 bytes, ldiv.o(.text), UNUSED)
+<P><STRONG><a name="[6c]"></a>Initialize_Q</STRONG> (Thumb, 1752 bytes, Stack size 136 bytes, imu_ahrs.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 376<LI>Call Chain = Initialize_Q &rArr; __hardfp_sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+</UL>
+<BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getValues
+<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invSqrt
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sin
+<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cos
+<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+</UL>
+<BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[110]"></a>IMU_AHRSupdate</STRONG> (Thumb, 1718 bytes, Stack size 152 bytes, imu_ahrs.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = IMU_AHRSupdate &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+</UL>
+<BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invSqrt
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sqrt
+</UL>
+<BR>[Called By]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getQ
+</UL>
+
+<P><STRONG><a name="[111]"></a>FreeIMU_AHRSupdate</STRONG> (Thumb, 1190 bytes, Stack size 96 bytes, imu_ahrs.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = FreeIMU_AHRSupdate &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+</UL>
+<BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
+<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invSqrt
+</UL>
+<BR>[Called By]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getQ
+</UL>
+
+<P><STRONG><a name="[112]"></a>IMU_getQ</STRONG> (Thumb, 176 bytes, Stack size 24 bytes, imu_ahrs.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = IMU_getQ &rArr; IMU_AHRSupdate &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+</UL>
+<BR>[Calls]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FreeIMU_AHRSupdate
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_AHRSupdate
+</UL>
+<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getRollPitchYaw
+</UL>
+
+<P><STRONG><a name="[cc]"></a>IMU_getRollPitchYaw</STRONG> (Thumb, 348 bytes, Stack size 48 bytes, imu_ahrs.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 312<LI>Call Chain = IMU_getRollPitchYaw &rArr; IMU_getQ &rArr; IMU_AHRSupdate &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+</UL>
+<BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;safe_asin
+<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
+<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getQ
+</UL>
+<BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getAttitude
+</UL>
+
+<P><STRONG><a name="[ce]"></a>AHRSupdate</STRONG> (Thumb, 7418 bytes, Stack size 208 bytes, imu_ahrs.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 432<LI>Call Chain = AHRSupdate &rArr; __hardfp_atan2 &rArr; atan &rArr; __hardfp_atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+</UL>
+<BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
+<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invSqrt
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sqrt
+<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+</UL>
+<BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getAttitude
+</UL>
+
+<P><STRONG><a name="[f3]"></a>__aeabi_ldivmod</STRONG> (Thumb, 98 bytes, Stack size 24 bytes, ldiv.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readTemperature
-<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readPressure
+<BR>[Called By]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readTemperature
+<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readPressure
 </UL>
 
 <P><STRONG><a name="[7e]"></a>__aeabi_dadd</STRONG> (Thumb, 322 bytes, Stack size 48 bytes, dadd.o(.text))
@@ -2006,21 +2006,21 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI9_5_IRQHandler
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Initialize_Q
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getAttitude
+<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
-<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_AHRSupdate
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FreeIMU_AHRSupdate
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
-<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan2
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
-<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FreeIMU_AHRSupdate
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_AHRSupdate
+<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
 <LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_sin
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ieee754_rem_pio2
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
+<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan2
+<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
 </UL>
 
 <P><STRONG><a name="[c7]"></a>__aeabi_dsub</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, dadd.o(.text))
@@ -2030,34 +2030,34 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_baro
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Initialize_Q
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
-<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_cos
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
-<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
+<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
 <LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_sin
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ieee754_rem_pio2
+<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_cos
 </UL>
 
-<P><STRONG><a name="[c6]"></a>__aeabi_drsub</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, dadd.o(.text))
+<P><STRONG><a name="[f1]"></a>__aeabi_drsub</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, dadd.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = __aeabi_drsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSeaLevel
-<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getAltitude
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
-<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_cos
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
-<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
+<BR>[Called By]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSeaLevel
+<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getAltitude
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
+<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
 <LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_sin
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ieee754_rem_pio2
+<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_cos
 </UL>
 
 <P><STRONG><a name="[73]"></a>__aeabi_dmul</STRONG> (Thumb, 228 bytes, Stack size 48 bytes, dmul.o(.text))
@@ -2070,54 +2070,54 @@ Global Symbols
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Initialize_Q
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getAttitude
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getAltitude
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KalmanAHRS_getRollPitchYaw
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getRollPitchYaw
-<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_AHRSupdate
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FreeIMU_AHRSupdate
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
-<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
-<LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_overflow
-<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_cos
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
-<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
+<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getAltitude
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KalmanAHRS_getRollPitchYaw
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getRollPitchYaw
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FreeIMU_AHRSupdate
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_AHRSupdate
+<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
 <LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_sin
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ieee754_rem_pio2
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
+<LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_overflow
+<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_cos
 </UL>
 
-<P><STRONG><a name="[c9]"></a>__aeabi_ddiv</STRONG> (Thumb, 222 bytes, Stack size 32 bytes, ddiv.o(.text))
+<P><STRONG><a name="[c5]"></a>__aeabi_ddiv</STRONG> (Thumb, 222 bytes, Stack size 32 bytes, ddiv.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = __aeabi_ddiv &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_round
 </UL>
-<BR>[Called By]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSeaLevel
-<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readTemperature
-<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getAltitude
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KalmanAHRS_getRollPitchYaw
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getRollPitchYaw
-<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_AHRSupdate
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
+<BR>[Called By]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSeaLevel
+<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readTemperature
+<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getAltitude
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KalmanAHRS_getRollPitchYaw
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getRollPitchYaw
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
+<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_AHRSupdate
 <LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_invalid
 <LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_divzero
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 </UL>
 
-<P><STRONG><a name="[fe]"></a>__aeabi_i2d</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, dflti.o(.text))
+<P><STRONG><a name="[f7]"></a>__aeabi_i2d</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, dflti.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = __aeabi_i2d &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
 <BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_baro
-<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readTemperature
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
+<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readTemperature
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ieee754_rem_pio2
 </UL>
 
@@ -2132,35 +2132,35 @@ Global Symbols
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ieee754_rem_pio2
 </UL>
 
-<P><STRONG><a name="[101]"></a>__aeabi_d2iz</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, dfixi.o(.text))
+<P><STRONG><a name="[fa]"></a>__aeabi_d2iz</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, dfixi.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_d2iz
 </UL>
 <BR>[Calls]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
 </UL>
 <BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_baro
-<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_cos
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ieee754_rem_pio2
+<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_cos
 </UL>
 
 <P><STRONG><a name="[7d]"></a>__aeabi_f2d</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, f2d.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI9_5_IRQHandler
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Initialize_Q
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getAttitude
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KalmanAHRS_getRollPitchYaw
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getRollPitchYaw
-<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_AHRSupdate
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FreeIMU_AHRSupdate
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;safe_asin
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
-<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Norm
-<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixDet2
+<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Norm
+<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixDet2
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KalmanAHRS_getRollPitchYaw
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getRollPitchYaw
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;safe_asin
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
+<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FreeIMU_AHRSupdate
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_AHRSupdate
+<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
 </UL>
 
-<P><STRONG><a name="[100]"></a>__aeabi_cdrcmple</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, cdrcmple.o(.text), UNUSED)
+<P><STRONG><a name="[f9]"></a>__aeabi_cdrcmple</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, cdrcmple.o(.text), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_baro
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
 </UL>
 
 <P><STRONG><a name="[76]"></a>__aeabi_d2f</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, d2f.o(.text))
@@ -2173,23 +2173,23 @@ Global Symbols
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Initialize_Q
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getAttitude
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_Baro
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KalmanAHRS_getRollPitchYaw
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getRollPitchYaw
-<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_AHRSupdate
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FreeIMU_AHRSupdate
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;safe_asin
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
-<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Norm
-<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixInverse2
+<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Norm
+<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixInverse2
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KalmanAHRS_getRollPitchYaw
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getRollPitchYaw
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;safe_asin
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
+<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FreeIMU_AHRSupdate
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_AHRSupdate
+<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_AHRSupdate
 </UL>
 
 <P><STRONG><a name="[113]"></a>__aeabi_uldivmod</STRONG> (Thumb, 98 bytes, Stack size 40 bytes, uldiv.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
 <LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
 </UL>
-<BR>[Called By]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ldivmod
+<BR>[Called By]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ldivmod
 </UL>
 
 <P><STRONG><a name="[114]"></a>__aeabi_llsl</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, llshl.o(.text))
@@ -2201,7 +2201,7 @@ Global Symbols
 <P><STRONG><a name="[1d5]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
 
 <P><STRONG><a name="[118]"></a>__aeabi_llsr</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, llushr.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
+<BR><BR>[Called By]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 <LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsqrt
 <LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
@@ -2227,7 +2227,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = _double_round
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 <LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsqrt
 </UL>
@@ -2242,11 +2242,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
+<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 </UL>
 
 <P><STRONG><a name="[12e]"></a>__ARM_scalbn</STRONG> (Thumb, 46 bytes, Stack size 16 bytes, dscalb.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
+<BR><BR>[Called By]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
 </UL>
 
 <P><STRONG><a name="[1da]"></a>scalbn</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, dscalb.o(.text), UNUSED)
@@ -2262,7 +2262,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[128]"></a>__aeabi_cdcmpeq</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, cdcmple.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
+<BR><BR>[Called By]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
 </UL>
 
 <P><STRONG><a name="[1db]"></a>__aeabi_cdcmple</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, cdcmple.o(.text), UNUSED)
@@ -2292,119 +2292,119 @@ Global Symbols
 <P><STRONG><a name="[121]"></a>__ARM_fpclassify</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, fpclassify.o(i.__ARM_fpclassify))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __ARM_fpclassify
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<BR>[Called By]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 <LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_sin
 </UL>
 
-<P><STRONG><a name="[ca]"></a>__hardfp_asin</STRONG> (Thumb, 770 bytes, Stack size 88 bytes, asin.o(i.__hardfp_asin))
+<P><STRONG><a name="[c9]"></a>__hardfp_asin</STRONG> (Thumb, 770 bytes, Stack size 88 bytes, asin.o(i.__hardfp_asin))
 <BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = __hardfp_asin &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
-<LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_invalid
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 <LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_fpclassify
 <LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fabs
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
+<LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_invalid
+<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;safe_asin
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
+<BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;safe_asin
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
 </UL>
 
-<P><STRONG><a name="[d6]"></a>__hardfp_atan</STRONG> (Thumb, 622 bytes, Stack size 48 bytes, atan.o(i.__hardfp_atan))
+<P><STRONG><a name="[10e]"></a>__hardfp_atan</STRONG> (Thumb, 622 bytes, Stack size 48 bytes, atan.o(i.__hardfp_atan))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = __hardfp_atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_fpclassify
 <LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fabs
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
+<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Initialize_Q
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan
 </UL>
 
-<P><STRONG><a name="[cb]"></a>__hardfp_atan2</STRONG> (Thumb, 448 bytes, Stack size 56 bytes, atan2.o(i.__hardfp_atan2))
+<P><STRONG><a name="[10d]"></a>__hardfp_atan2</STRONG> (Thumb, 448 bytes, Stack size 56 bytes, atan2.o(i.__hardfp_atan2))
 <BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = __hardfp_atan2 &rArr; atan &rArr; __hardfp_atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan2
+<BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 <LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmpeq
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 <LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fabs
+<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan2
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Initialize_Q
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KalmanAHRS_getRollPitchYaw
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getRollPitchYaw
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KalmanAHRS_getRollPitchYaw
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_getRollPitchYaw
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
 </UL>
 
-<P><STRONG><a name="[d7]"></a>__hardfp_cos</STRONG> (Thumb, 180 bytes, Stack size 32 bytes, cos.o(i.__hardfp_cos))
+<P><STRONG><a name="[10f]"></a>__hardfp_cos</STRONG> (Thumb, 180 bytes, Stack size 32 bytes, cos.o(i.__hardfp_cos))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = __hardfp_cos &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_invalid
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
-<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_cos
-<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
+<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 <LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_sin
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ieee754_rem_pio2
+<LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_invalid
+<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
+<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_cos
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Initialize_Q
 </UL>
 
-<P><STRONG><a name="[f8]"></a>__hardfp_pow</STRONG> (Thumb, 3072 bytes, Stack size 192 bytes, pow.o(i.__hardfp_pow), UNUSED)
+<P><STRONG><a name="[f0]"></a>__hardfp_pow</STRONG> (Thumb, 3072 bytes, Stack size 192 bytes, pow.o(i.__hardfp_pow), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
-<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdrcmple
+<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
+<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
+<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdrcmple
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
-<LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_overflow
-<LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_invalid
-<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan2
-<LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_divzero
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 <LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt
 <LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_fpclassify
 <LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fabs
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
+<LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_overflow
+<LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_invalid
+<LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan2
+<LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_divzero
 </UL>
-<BR>[Called By]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSeaLevel
-<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getAltitude
+<BR>[Called By]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSeaLevel
+<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getAltitude
 </UL>
 
-<P><STRONG><a name="[d2]"></a>__hardfp_sin</STRONG> (Thumb, 180 bytes, Stack size 32 bytes, sin.o(i.__hardfp_sin))
+<P><STRONG><a name="[c6]"></a>__hardfp_sin</STRONG> (Thumb, 180 bytes, Stack size 32 bytes, sin.o(i.__hardfp_sin))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = __hardfp_sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_invalid
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
-<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_cos
-<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
+<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 <LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_sin
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ieee754_rem_pio2
+<LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_invalid
+<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
+<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_cos
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Initialize_Q
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
 </UL>
 
 <P><STRONG><a name="[c8]"></a>__hardfp_sqrt</STRONG> (Thumb, 122 bytes, Stack size 32 bytes, sqrt.o(i.__hardfp_sqrt))
@@ -2413,10 +2413,10 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsqrt
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
-<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_AHRSupdate
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Norm
+<BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Norm
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;simple_imu
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_AHRSupdate
 </UL>
 
 <P><STRONG><a name="[129]"></a>__ieee754_rem_pio2</STRONG> (Thumb, 938 bytes, Stack size 120 bytes, rred.o(i.__ieee754_rem_pio2))
@@ -2425,27 +2425,27 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
+<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
+<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
 <LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fabs
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sin
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cos
+<BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sin
+<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cos
 </UL>
 
 <P><STRONG><a name="[12b]"></a>__kernel_cos</STRONG> (Thumb, 322 bytes, Stack size 64 bytes, cos_i.o(i.__kernel_cos))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = __kernel_cos &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
+<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sin
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cos
+<BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sin
+<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cos
 </UL>
 
 <P><STRONG><a name="[123]"></a>__kernel_poly</STRONG> (Thumb, 248 bytes, Stack size 24 bytes, poly.o(i.__kernel_poly))
@@ -2454,11 +2454,11 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 </UL>
-<BR>[Called By]<UL><LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_cos
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<BR>[Called By]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 <LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_sin
+<LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_cos
 </UL>
 
 <P><STRONG><a name="[12a]"></a>__kernel_sin</STRONG> (Thumb, 280 bytes, Stack size 72 bytes, sin_i.o(i.__kernel_sin))
@@ -2466,20 +2466,20 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_fpclassify
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sin
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cos
+<BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sin
+<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cos
 </UL>
 
 <P><STRONG><a name="[12c]"></a>__mathlib_dbl_divzero</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, dunder.o(i.__mathlib_dbl_divzero), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<BR><BR>[Calls]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
+<BR>[Called By]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
 </UL>
 
 <P><STRONG><a name="[11e]"></a>__mathlib_dbl_infnan</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, dunder.o(i.__mathlib_dbl_infnan))
@@ -2487,10 +2487,10 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sin
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cos
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sin
+<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cos
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 </UL>
 
 <P><STRONG><a name="[126]"></a>__mathlib_dbl_infnan2</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, dunder.o(i.__mathlib_dbl_infnan2))
@@ -2498,25 +2498,25 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
+<BR>[Called By]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
+<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
 </UL>
 
 <P><STRONG><a name="[120]"></a>__mathlib_dbl_invalid</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, dunder.o(i.__mathlib_dbl_invalid))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = __mathlib_dbl_invalid &rArr; __aeabi_ddiv &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<BR>[Calls]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sin
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cos
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sin
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
+<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cos
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 </UL>
 
 <P><STRONG><a name="[12d]"></a>__mathlib_dbl_overflow</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, dunder.o(i.__mathlib_dbl_overflow), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
+<BR>[Called By]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
 </UL>
 
 <P><STRONG><a name="[122]"></a>__mathlib_dbl_underflow</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, dunder.o(i.__mathlib_dbl_underflow))
@@ -2524,9 +2524,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<BR>[Called By]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 <LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_sin
 </UL>
 
@@ -2539,28 +2539,28 @@ Global Symbols
 <P><STRONG><a name="[11f]"></a>__set_errno</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, errno.o(i.__set_errno))
 <BR><BR>[Called By]<UL><LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sqrt
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sin
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cos
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sin
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
+<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_cos
+<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 </UL>
 
 <P><STRONG><a name="[127]"></a>atan</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, atan.o(i.atan))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = atan &rArr; __hardfp_atan &rArr; __kernel_poly &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<BR>[Calls]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
+<BR>[Called By]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
 </UL>
 
 <P><STRONG><a name="[124]"></a>fabs</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, fabs.o(i.fabs))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = fabs
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<BR>[Called By]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
+<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ieee754_rem_pio2
 </UL>
 
@@ -2570,8 +2570,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsqrt
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<BR>[Called By]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_pow
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 </UL>
 <P>
 <H3>

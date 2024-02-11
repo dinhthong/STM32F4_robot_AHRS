@@ -568,6 +568,11 @@
               <FileType>1</FileType>
               <FilePath>..\HardWareDriver\IMU\Kalman_AHRS.c</FilePath>
             </File>
+            <File>
+              <FileName>IMU_AHRS.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HardWareDriver\IMU\IMU_AHRS.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
